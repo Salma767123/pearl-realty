@@ -75,14 +75,29 @@ const Navbar = () => {
             />
           </button>
 
-          {/* Desktop right: Book Consultation + toggle + hamburger */}
-          <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={() => scrollTo("contact")}
-              className="font-body text-[10px] tracking-[0.3em] uppercase text-charcoal/60 dark:text-foreground/60 hover:text-champagne transition-colors duration-500"
-            >
-              Book Consultation
-            </button>
+            {/* Desktop right: Book Consultation + toggle + hamburger */}
+            <div className="hidden md:flex items-center gap-4">
+              <button
+                onClick={() => scrollTo("contact")}
+                className={`relative px-6 py-3 rounded-full font-body text-[10px] tracking-[0.3em] uppercase font-medium transition-all duration-300 group overflow-hidden border ${
+                  mounted && (resolvedTheme === 'light' || theme === 'light')
+                    ? "border-[#111111]/80 text-[#111111] hover:border-[#111111]"
+                    : "border-champagne/80 text-champagne hover:border-champagne"
+                } hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]`}
+              >
+                <div className={`absolute inset-0 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+                  mounted && (resolvedTheme === 'light' || theme === 'light')
+                    ? "bg-[#111111]"
+                    : "bg-champagne"
+                }`} />
+                <span className={`relative z-10 transition-colors duration-300 ${
+                  mounted && (resolvedTheme === 'light' || theme === 'light')
+                    ? "group-hover:text-white"
+                    : "group-hover:text-background"
+                }`}>
+                  Book Consultation
+                </span>
+              </button>
             <div className="w-px h-4 bg-champagne/30" />
             <ThemeToggle />
             <div className="w-px h-4 bg-champagne/20" />

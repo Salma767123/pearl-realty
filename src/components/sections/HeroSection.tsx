@@ -126,16 +126,15 @@ const HeroSection = () => {
           Trusted strategic guidance across real estate, portfolio growth, investments, assets, and generational wealth planning.
         </p>
 
-        {/* CTA - Elegant Centered Premium Pill */}
+        {/* CTA - Premium Luxury Gold Button */}
         <div className={`mt-14 w-full flex justify-center transition-all duration-1000 delay-[1500ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <MagneticButton
             onClick={scrollToContact}
-            className={`w-[90%] md:w-full md:max-w-[420px] h-[64px] flex items-center justify-center text-[12px] tracking-[0.4em] font-bold transition-all duration-500 rounded-full ${currentTheme === 'light'
-              ? "border-2 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white bg-white/10 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.2)] hover:-translate-y-1"
-              : ""
-              }`}
+            className="group w-[90%] md:w-full md:max-w-[420px] !h-[62px] flex items-center justify-center font-bold !text-[#111111] hover:!text-[#111111] !border !border-[rgba(255,255,255,0.15)] !bg-[linear-gradient(135deg,#C7A56A,#D8B97F)] rounded-full transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(199,165,106,0.3)] !px-0 !py-0"
           >
-            Request Consultation
+            {/* Shimmer overlay element */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[100%] group-hover:animate-[shimmer-sweep_1.5s_ease-in-out] z-0" />
+            <span className="relative z-10 flex items-center justify-center w-full h-full text-[12px] tracking-[0.4em]">REQUEST CONSULTATION</span>
           </MagneticButton>
         </div>
       </div>
