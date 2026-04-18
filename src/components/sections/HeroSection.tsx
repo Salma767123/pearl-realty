@@ -1,15 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
 import heroLight from "@/assets/hero-uae-light.png";
-import heroDark from "@/assets/hero-skyline.jpg";
 import SkylineDoodle from "@/components/SkylineDoodle";
 import MagneticButton from "@/components/MagneticButton";
 
 const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -19,8 +15,7 @@ const HeroSection = () => {
     setTimeout(() => setLoaded(true), 300);
   }, []);
 
-  const currentTheme = mounted ? (resolvedTheme || theme) : 'dark';
-  const heroImage = currentTheme === 'light' ? heroLight : heroDark;
+  const heroImage = heroLight;
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -46,45 +41,37 @@ const HeroSection = () => {
             fill
             priority
             quality={100}
-            className={`object-cover transition-opacity duration-1000 ${currentTheme === 'light' ? "opacity-85" : "opacity-40"
-              }`}
+            className="object-cover transition-opacity duration-1000 opacity-85"
             sizes="100vw"
           />
         </motion.div>
 
         {/* Premium Layered Shadow Overlay (Enhanced Contrast) */}
-        <div className={`absolute inset-0 transition-all duration-700 ${currentTheme === 'light'
-          ? "bg-gradient-to-bottom"
-          : "bg-gradient-to-b from-black/40 via-background/70 to-background"
-          }`}
-          style={currentTheme === 'light' ? {
+        <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-bottom"
+          style={{
             background: "linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.36) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.40) 100%)"
-          } : {}}
+          }}
         />
 
         {/* Radial spotlight — lifts text off the skyline in light mode */}
-        {currentTheme === 'light' && (
-          <div
-            className="absolute inset-0 pointer-events-none z-[1]"
-            style={{
-              background: "radial-gradient(circle at 50% 48%, rgba(255,255,255,0.22) 0%, transparent 68%)"
-            }}
-          />
-        )}
+        <div
+          className="absolute inset-0 pointer-events-none z-[1]"
+          style={{
+            background: "radial-gradient(circle at 50% 48%, rgba(255,255,255,0.22) 0%, transparent 68%)"
+          }}
+        />
 
         {/* Soft Cloud/Moving Shadow Layer */}
-        {currentTheme === 'light' && (
-          <motion.div
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: "100%", opacity: [0, 0.15, 0] }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute inset-0 pointer-events-none z-1 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-[120px]"
-          />
-        )}
+        <motion.div
+          initial={{ x: "-100%", opacity: 0 }}
+          animate={{ x: "100%", opacity: [0, 0.15, 0] }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute inset-0 pointer-events-none z-1 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-[120px]"
+        />
       </div>
 
       {/* Floating particles */}
@@ -114,21 +101,16 @@ const HeroSection = () => {
         >
           <span
             className="font-body text-xs uppercase"
-            style={currentTheme === 'light' ? {
+            style={{
               color: "#e0a94bff",
               fontWeight: 600,
               letterSpacing: "0.28em",
               textShadow: "0 2px 8px rgba(255,255,255,0.18)",
               padding: "6px 14px",
-              // background: "rgba(255,255,255,0.18)",
               backdropFilter: "blur(8px)",
               WebkitBackdropFilter: "blur(8px)",
               borderRadius: "999px",
               display: "inline-block",
-            } : {
-              fontWeight: 700,
-              letterSpacing: "0.5em",
-              color: "var(--color-gold)",
             }}
           >
             Private Wealth & Real Estate Advisory · Dubai
@@ -140,7 +122,7 @@ const HeroSection = () => {
           ref={titleRef}
           className={`mt-10 font-display text-4xl md:text-6xl lg:text-8xl font-semibold leading-[1.1] tracking-tight transition-all duration-1200 delay-700 [text-shadow:0_2px_10px_rgba(255,255,255,0.08)] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className={`block ${currentTheme === 'light' ? "text-[#0a0a0a]" : "text-foreground"}`}>
+          <span className="block text-[#0a0a0a]">
             Build Legacy Where
           </span>
           <span className="block mt-3 pb-2 text-gradient-gold">the World Invests</span>
@@ -149,7 +131,7 @@ const HeroSection = () => {
         {/* Subtitle - Refined Contrast */}
         <p
           className={`mt-10 max-w-2xl mx-auto font-body text-base md:text-xl leading-[1.7] transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={currentTheme === 'light' ? {
+          style={{
             color: "#1A1A1A",
             fontWeight: 500,
             textShadow: "0 1px 8px rgba(255,255,255,0.14)",
@@ -159,8 +141,6 @@ const HeroSection = () => {
             WebkitBackdropFilter: "blur(10px)",
             padding: "12px 20px",
             borderRadius: "18px",
-          } : {
-            color: "rgba(var(--foreground-rgb),0.70)",
           }}
         >
           Trusted strategic guidance across real estate, portfolio growth, investments, assets, and generational wealth planning.

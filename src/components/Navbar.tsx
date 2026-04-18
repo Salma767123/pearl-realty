@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import logo from "@/assets/logo.png";
 import lightLogo from "@/assets/light_logo.png";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Advisory", id: "founder" },
@@ -24,7 +22,6 @@ const SOCIAL_LINKS = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -67,7 +64,7 @@ const Navbar = () => {
             className="flex items-center"
           >
             <Image
-              src={mounted && (resolvedTheme === 'light' || theme === 'light') ? lightLogo : logo}
+              src={mounted ? lightLogo : logo}
               alt="Pearl Legacy"
               width={150}
               height={50}
@@ -86,16 +83,11 @@ const Navbar = () => {
                 Book Consultation
               </span>
             </button>
-            <div className="w-px h-4 bg-champagne/45" />
-            <ThemeToggle />
-            <div className="w-px h-4 bg-champagne/35" />
-            {/* Hamburger */}
             <HamburgerButton open={sidebarOpen} onClick={() => setSidebarOpen(!sidebarOpen)} />
           </div>
 
-          {/* Mobile: toggle + hamburger */}
+          {/* Mobile: hamburger */}
           <div className="md:hidden flex items-center gap-3">
-            <ThemeToggle />
             <HamburgerButton open={sidebarOpen} onClick={() => setSidebarOpen(!sidebarOpen)} />
           </div>
         </div>
