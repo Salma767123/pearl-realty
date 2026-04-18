@@ -112,8 +112,7 @@ const CTASection = () => {
     <>
       <section
         ref={containerRef}
-        className="relative flex flex-col items-center overflow-hidden pt-10 md:pt-20 pb-0 dark"
-        style={{ background: "linear-gradient(180deg, hsl(217 34% 14%) 0%, hsl(217 34% 10%) 100%)" }}
+        className="relative flex flex-col items-center overflow-hidden pt-10 md:pt-20 pb-0 bg-charcoal-deep dark"
       >
         {/* Cinematic Background Layer */}
         <div className="absolute inset-0 pointer-events-none">
@@ -203,10 +202,10 @@ const CTASection = () => {
               />
 
               {/* Cinematic Smoke Fade Overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 z-20" style={{ background: "linear-gradient(to top, hsl(217 34% 10%), hsla(217, 34%, 10%, 0.8), transparent)" }} />
+              <div className="absolute inset-x-0 bottom-0 h-1/3 z-20" style={{ background: "linear-gradient(to top, hsl(var(--charcoal-deep)), hsla(var(--charcoal-deep) / 0.8), transparent)" }} />
 
               {/* Additional soft blur layer for smoke feel */}
-              <div className="absolute inset-x-0 -bottom-10 h-32 blur-1xl opacity-10 z-10" style={{ background: "hsl(217 34% 10%)" }} />
+              <div className="absolute inset-x-0 -bottom-10 h-32 blur-1xl opacity-10 z-10" style={{ background: "hsl(var(--charcoal-deep))" }} />
             </motion.div>
           </motion.div>
         </div>
