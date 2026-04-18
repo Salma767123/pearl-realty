@@ -86,9 +86,9 @@ const Navbar = () => {
                 Book Consultation
               </span>
             </button>
-            <div className="w-px h-4 bg-champagne/30" />
+            <div className="w-px h-4 bg-champagne/45" />
             <ThemeToggle />
-            <div className="w-px h-4 bg-champagne/20" />
+            <div className="w-px h-4 bg-champagne/35" />
             {/* Hamburger */}
             <HamburgerButton open={sidebarOpen} onClick={() => setSidebarOpen(!sidebarOpen)} />
           </div>

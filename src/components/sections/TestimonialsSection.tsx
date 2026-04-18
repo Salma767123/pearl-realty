@@ -97,7 +97,7 @@ const TestimonialsSection = () => {
         {/* Header Content */}
         <div className="max-w-4xl mx-auto mb-20">
           <ScrollReveal>
-            <span className="font-body text-xs tracking-[0.5em] uppercase text-champagne font-semibold">
+            <span className="font-body text-xs tracking-[0.5em] uppercase text-champagne/90 font-semibold">
               The Architecture of Trust
             </span>
           </ScrollReveal>
@@ -217,13 +217,13 @@ const TestimonialsSection = () => {
           <div className="flex items-center justify-between absolute top-1/2 left-0 right-0 -translate-y-1/2 -mx-10 md:-mx-20 z-30">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full border border-foreground/10 text-foreground/40 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
+              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={handleNext}
-              className="p-3 rounded-full border border-foreground/10 text-foreground/40 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
+              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -245,11 +245,11 @@ const TestimonialsSection = () => {
               <div className="flex flex-col items-center">
                 <p className="font-body text-base font-semibold text-foreground tracking-wide leading-none">{activeTestimonial.name}</p>
                 <div className="flex items-center gap-3 mt-3">
-                  <div className="w-8 h-px bg-champagne/60" />
-                  <p className="font-body text-[11px] text-foreground/50 uppercase tracking-[0.3em] font-medium leading-none">
+                  <div className="w-8 h-px bg-champagne/75" />
+                  <p className="font-body text-[11px] text-foreground/65 uppercase tracking-[0.3em] font-medium leading-none">
                     {activeTestimonial.marker}
                   </p>
-                  <div className="w-8 h-px bg-champagne/60" />
+                  <div className="w-8 h-px bg-champagne/75" />
                 </div>
               </div>
             </motion.div>

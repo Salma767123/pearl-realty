@@ -22,7 +22,7 @@
     --secondary-foreground: 0 0% 11%;
 
     --muted: 37 27% 95%;       /* Ivory #F6F3EE for backgrounds */
-    --muted-foreground: 0 0% 40%; /* Warm Gray #666666 */
+    --muted-foreground: 0 0% 32%; /* Warm Gray — darkened for light theme readability */
 
     --accent: 38 45% 60%;      /* Champagne Gold approx */
     --accent-foreground: 45 25% 96%;
@@ -30,7 +30,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 85%;
+    --border: 0 0% 76%; /* Slightly darker borders for light theme */
     --input: 45 25% 96%;
     --ring: 38 45% 60%;
 
@@ -47,8 +47,8 @@
     --charcoal: 0 0% 11%;           /* Deep Graphite */
     --charcoal-deep: 217 34% 20%;   /* Muted Navy */
     
-    --gold: 38 45% 60%;
-    --gold-muted: 38 40% 50%;
+    --gold: 38 50% 52%; /* Richer gold for light theme */
+    --gold-muted: 38 45% 42%; /* Deeper muted gold */
 
     --font-display: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -247,7 +247,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--champagne) / 0.5);
+  background: hsl(var(--champagne) / 0.65);
   border-radius: 3px;
 }
 

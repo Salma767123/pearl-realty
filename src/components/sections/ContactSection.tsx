@@ -18,7 +18,7 @@ const ContactSection = () => {
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <ScrollReveal>
-          <span className="font-body text-xs tracking-[0.4em] uppercase text-champagne font-semibold">
+          <span className="font-body text-xs tracking-[0.4em] uppercase text-champagne/90 font-semibold">
             Private Access
           </span>
         </ScrollReveal>
@@ -39,7 +39,7 @@ const ContactSection = () => {
 
         {submitted ? (
           <ScrollReveal>
-            <div className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-12 text-center border border-black/[0.06] dark:border-white/5 shadow-[0_4px_40px_-8px_rgba(0,0,0,0.1)]">
+            <div className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-12 text-center border border-black/[0.10] dark:border-white/5 shadow-[0_4px_40px_-8px_rgba(0,0,0,0.1)]">
               <h3 className="font-display text-2xl text-foreground">Thank you.</h3>
               <p className="mt-4 font-body text-sm text-muted-foreground">
                 Your request has been received. We will be in touch within 48 hours.
@@ -48,46 +48,46 @@ const ContactSection = () => {
           </ScrollReveal>
         ) : (
           <ScrollReveal delay={600}>
-            <form onSubmit={handleSubmit} className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-black/[0.06] dark:border-white/5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.1)]">
+            <form onSubmit={handleSubmit} className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-black/[0.10] dark:border-white/5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/50 mb-3">
+                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
                     Name
                   </label>
                   <input
                     type="text"
                     required
-                    className="w-full bg-transparent border-b border-foreground/20 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/25"
+                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
                     placeholder="Full name"
                   />
                 </div>
                 <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/50 mb-3">
+                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
                     Email
                   </label>
                   <input
                     type="email"
                     required
-                    className="w-full bg-transparent border-b border-foreground/20 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/25"
+                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/50 mb-3">
+                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
                     Phone
                   </label>
                   <input
                     type="tel"
-                    className="w-full bg-transparent border-b border-foreground/20 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/25"
+                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
                     placeholder="+971 ..."
                   />
                 </div>
                 <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/50 mb-3">
+                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
                     Investment Interest
                   </label>
                   <select
-                    className="w-full bg-transparent border-b border-foreground/20 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500"
+                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500"
                   >
                     <option value="" className="bg-background">Select range</option>
                     <option value="5-10" className="bg-background">$5M – $10M</option>
@@ -100,7 +100,7 @@ const ContactSection = () => {
 
               <div className="mt-12 flex flex-col items-center gap-6">
                 <MagneticButton>Enter the Circle</MagneticButton>
-                <p className="font-body text-[10px] tracking-wider uppercase text-foreground/35">
+                <p className="font-body text-[10px] tracking-wider uppercase text-foreground/55 font-medium">
                   Handled with absolute discretion
                 </p>
               </div>
@@ -112,15 +112,15 @@ const ContactSection = () => {
         <ScrollReveal delay={800}>
           <div className="mt-16 flex flex-wrap justify-center gap-10 text-center">
             <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/40 mb-2">Email</p>
+              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Email</p>
               <p className="font-body text-sm text-foreground/80">advisory@pearlrealty.ae</p>
             </div>
             <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/40 mb-2">Phone</p>
+              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Phone</p>
               <p className="font-body text-sm text-foreground/80">+971 4 XXX XXXX</p>
             </div>
             <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/40 mb-2">Location</p>
+              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Location</p>
               <p className="font-body text-sm text-foreground/80">DIFC, Dubai, UAE</p>
             </div>
           </div>

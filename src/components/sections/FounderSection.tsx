@@ -3,9 +3,9 @@ import DoodleLine from "@/components/DoodleLine";
 
 const FounderSection = () => {
   const timeline = [
-    { year: "10+ Years", label: "Private Wealth & UHNWI Advisory" },
-    { year: "Global", label: "London · Mumbai · Singapore · GCC" },
-    { year: "RERA", label: "Certified Real Estate Broker, Dubai" },
+    { year: "10+ Years", label: "Sample Text" },
+    { year: "Global", label: "Sample Text" },
+    { year: "RERA", label: "Sample Text" },
     { year: "DIFC", label: "Dubai Chamber of Commerce Member" },
   ];
 
@@ -15,7 +15,7 @@ const FounderSection = () => {
 
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <span className="font-body text-xs tracking-[0.4em] uppercase text-champagne/50">
+          <span className="font-body text-xs tracking-[0.4em] uppercase text-[#222222] font-semibold dark:text-champagne/75 dark:font-normal">
             The Founder
           </span>
         </ScrollReveal>
@@ -31,14 +31,14 @@ const FounderSection = () => {
           {/* Left - Story */}
           <div>
             <ScrollReveal delay={400}>
-              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+              <p className="font-body text-lg text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
                 Investors and clients are not engaging Pearl Realty — they are engaging{" "}
-                <span className="text-foreground font-medium">Raghunath Nallamuthu</span>.
+                <span className="text-[#111111] font-bold dark:text-foreground">Raghunath Nallamuthu</span>.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={600}>
-              <p className="mt-6 font-body text-base text-muted-foreground leading-relaxed">
+              <p className="mt-6 font-body text-base text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
                 A career-long UHNWI relationship specialist with over a decade of experience
                 across private wealth, luxury real estate advisory, and family office mandates.
                 Operating at the intersection of ultra-prime real estate, family wealth strategy,
@@ -47,19 +47,19 @@ const FounderSection = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={800}>
-              <p className="mt-6 font-body text-base text-muted-foreground leading-relaxed">
-                The firm operates on three non-negotiables: <span className="text-champagne">exclusivity</span> — all engagements by invitation only;{" "}
-                <span className="text-champagne">discretion</span> — no transaction is ever announced;{" "}
-                <span className="text-champagne">precision</span> — a maximum of 35 active client mandates to preserve advisory quality.
+              <p className="mt-6 font-body text-base text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
+                The firm operates on three non-negotiables: <span className="text-gradient-gold font-bold">exclusivity</span> — all engagements by invitation only;{" "}
+                <span className="text-gradient-gold font-bold">discretion</span> — no transaction is ever announced;{" "}
+                <span className="text-gradient-gold font-bold">precision</span> — a maximum of 35 active client mandates to preserve advisory quality.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={1000}>
               <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="mt-10 font-body text-xs tracking-[0.2em] uppercase text-champagne/60 hover:text-champagne transition-colors duration-500 flex items-center gap-3"
+                className="mt-10 font-body text-xs tracking-[0.2em] uppercase text-[#111111] font-semibold hover:text-[#444444] dark:text-champagne/80 dark:font-normal dark:hover:text-champagne transition-colors duration-500 flex items-center gap-3"
               >
-                <span className="w-8 h-px bg-champagne/40" />
+                <span className="w-8 h-px bg-[#111111] dark:bg-champagne/55" />
                 Work Directly With Me
               </button>
             </ScrollReveal>
@@ -73,11 +73,11 @@ const FounderSection = () => {
               {timeline.map((item, i) => (
                 <ScrollReveal key={i} delay={400 + i * 200}>
                   <div className="relative">
-                    <div className="absolute -left-10 top-1 w-3 h-3 rounded-full border border-champagne/40 bg-background" />
-                    <span className="font-body text-xs tracking-[0.2em] uppercase text-champagne/60">
+                    <div className="absolute -left-10 top-1 w-3 h-3 rounded-full border border-black/30 dark:border-champagne/65 bg-black/[0.05] dark:bg-background" />
+                    <span className="font-body text-xs tracking-[0.2em] uppercase text-[#222222] font-semibold dark:font-normal dark:text-champagne/80">
                       {item.year}
                     </span>
-                    <p className="mt-1 font-display text-lg text-foreground">{item.label}</p>
+                    <p className="mt-1 font-display text-lg text-[#444444] font-medium dark:text-foreground dark:font-normal">{item.label}</p>
                   </div>
                 </ScrollReveal>
               ))}

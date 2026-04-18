@@ -69,24 +69,24 @@ const ServiceCard = ({ pillar, index }: { pillar: typeof pillars[0]; index: numb
       transition={{ duration: 0.8, delay: index * 0.1 }}
       className={`relative group ${pillar.offset}`}
     >
-      <div className="relative h-full bg-white/80 dark:bg-card/40 backdrop-blur-sm p-8 rounded-2xl border border-black/[0.06] dark:border-white/5 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] dark:shadow-none hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.12)] hover:border-champagne/40 transition-all duration-700 overflow-hidden group">
+      <div className="relative h-full bg-white/80 dark:bg-card/40 backdrop-blur-sm p-8 rounded-2xl border border-black/[0.10] dark:border-white/5 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] dark:shadow-none hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.14)] hover:border-champagne/50 transition-all duration-700 overflow-hidden group">
         {/* Background Ambient Pattern */}
         <div className={`absolute inset-0 bg-gradient-to-br ${pillar.theme} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-2xl`} />
 
         {/* Watermark Number */}
-        <span className="absolute -top-2 -right-1 font-display text-6xl text-charcoal/[0.04] dark:text-foreground/[0.04] select-none pointer-events-none group-hover:text-champagne/[0.08] transition-colors duration-700">
+        <span className="absolute -top-2 -right-1 font-display text-6xl text-black/[0.08] font-semibold dark:font-normal dark:text-foreground/[0.04] select-none pointer-events-none group-hover:text-champagne/[0.12] transition-colors duration-700">
           {pillar.number}
         </span>
 
         {/* Content */}
         <div className="relative z-10">
-          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-champagne block mb-4">
+          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-[#222222] font-semibold dark:font-normal dark:text-champagne/90 block mb-4">
             {pillar.subtitle}
           </span>
-          <h3 className="font-display text-2xl mb-6 text-charcoal dark:text-foreground group-hover:text-gradient-gold transition-all duration-500">
+          <h3 className="font-display text-2xl mb-6 text-gold dark:text-foreground group-hover:text-gradient-gold transition-all duration-500">
             {pillar.title}
           </h3>
-          <p className="font-body text-sm text-charcoal/60 dark:text-foreground/60 leading-relaxed group-hover:text-charcoal/80 transition-colors duration-500">
+          <p className="font-body text-sm text-[#444444] font-medium group-hover:text-black dark:text-foreground/60 dark:font-normal leading-relaxed dark:group-hover:text-charcoal/90 transition-colors duration-500">
             {pillar.description}
           </p>
         </div>
@@ -108,7 +108,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="max-w-3xl mb-24">
           <ScrollReveal>
-            <span className="font-body text-[10px] tracking-[0.6em] uppercase text-champagne mb-4 block">
+            <span className="font-body text-[10px] tracking-[0.6em] uppercase text-[#222222] font-semibold dark:text-champagne/90 dark:font-normal mb-4 block">
               Value Pillars
             </span>
           </ScrollReveal>
@@ -119,7 +119,7 @@ const ServicesSection = () => {
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={400}>
-            <p className="mt-8 font-body text-lg text-charcoal/60 leading-relaxed font-light">
+            <p className="mt-8 font-body text-lg text-[#444444] font-medium dark:text-charcoal/70 dark:font-light leading-relaxed">
               We operate exclusively as a private office mandate. Our services are tailored
               for multi-generational capital and ultra-prime asset positioning in the
               world's emerging center of momentum.
@@ -136,12 +136,12 @@ const ServicesSection = () => {
 
         {/* Footer CTA */}
         <ScrollReveal delay={1000}>
-          <div className="mt-32 text-center border-t border-charcoal/10 pt-16">
+          <div className="mt-32 text-center border-t border-charcoal/20 dark:border-charcoal/15 pt-16">
             <button
               onClick={() => document.getElementById("clients")?.scrollIntoView({ behavior: "smooth" })}
-              className="font-body text-xs tracking-[0.3em] uppercase text-champagne hover:text-gold transition-all duration-500 flex items-center gap-4 mx-auto group"
+              className="font-body text-xs tracking-[0.3em] uppercase text-[#111111] font-semibold hover:text-[#444444] dark:text-champagne/85 dark:font-normal dark:hover:text-champagne transition-all duration-500 flex items-center gap-4 mx-auto group"
             >
-              <span className="w-12 h-px bg-champagne/50 group-hover:w-20 transition-all duration-700" />
+              <span className="w-12 h-px bg-[#111111] dark:bg-champagne/65 group-hover:w-20 transition-all duration-700" />
               Explore Global Clientele
             </button>
           </div>

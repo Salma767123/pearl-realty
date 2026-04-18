@@ -64,9 +64,8 @@ const ConnectorSVG = () => {
       <path
         ref={pathRef}
         d="M1,0 C1,50 1,100 1,150 C1,200 1,250 1,300 C1,350 1,380 1,400"
-        stroke="hsl(40, 50%, 60%)"
-        strokeWidth="1"
-        opacity="0.35"
+        className="stroke-black/20 dark:stroke-[hsl(40,55%,48%)]"
+        strokeWidth="1.2"
       />
     </svg>
   );
@@ -221,24 +220,19 @@ const PhilosophyPoint = ({
     >
       {/* Node dot */}
       <div
-        className="absolute left-4 md:left-5 top-1.5 w-3 h-3 rounded-full border transition-all duration-700"
-        style={{
-          borderColor: visible ? "hsl(40, 50%, 60%)" : "hsl(0, 0%, 80%)",
-          boxShadow: visible ? "0 0 12px hsl(40, 50%, 60%, 0.4)" : "none",
-          background: visible ? "hsl(40, 50%, 60%, 0.15)" : "transparent",
-        }}
+        className={`absolute left-4 md:left-5 top-1.5 w-3 h-3 rounded-full border transition-all duration-700 ${visible ? "border-black/30 bg-black/[0.05] shadow-[0_0_12px_rgba(0,0,0,0.05)] dark:border-[hsl(40,55%,45%)] dark:bg-[hsl(40,55%,45%,0.18)] dark:shadow-[0_0_12px_hsla(40,55%,45%,0.4)]" : "border-black/15 bg-transparent dark:border-[hsl(0,0%,68%)]"}`}
       />
 
       {/* Label chip */}
-      <span className="font-body text-[10px] tracking-[0.35em] uppercase text-champagne/50">
+      <span className="font-body text-[10px] tracking-[0.35em] uppercase text-[#222222] font-semibold dark:text-champagne/75 dark:font-normal">
         {point.label}
       </span>
 
-      <h4 className="mt-2 font-display text-lg md:text-xl font-medium text-foreground leading-snug">
+      <h4 className="mt-2 font-display text-lg md:text-xl font-medium text-gold leading-snug">
         {point.title}
       </h4>
 
-      <p className="mt-2 font-body text-sm text-muted-foreground leading-relaxed max-w-md">
+      <p className="mt-2 font-body text-sm text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed max-w-md">
         {point.description}
       </p>
     </div>
@@ -309,7 +303,7 @@ const ManifestoSection = () => {
           <div className="md:col-span-7 relative">
             {/* Section label */}
             <div className="mb-2">
-              <span className="font-body text-[10px] tracking-[0.5em] uppercase text-champagne/40">
+              <span className="font-body text-[10px] tracking-[0.5em] uppercase text-[#222222] font-semibold dark:text-champagne/70 dark:font-normal">
                 Our Philosophy
               </span>
             </div>
@@ -326,7 +320,7 @@ const ManifestoSection = () => {
 
             {/* Subheading */}
             <div className="mt-2 max-w-lg">
-              <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p className="font-body text-base md:text-lg text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
                 Where every engagement is built on trust, every decision on insight,
                 and every outcome on lasting value.
               </p>
@@ -348,9 +342,9 @@ const ManifestoSection = () => {
                     .getElementById("founder")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group font-body text-xs tracking-[0.25em] uppercase text-champagne/60 hover:text-champagne transition-colors duration-500 flex items-center gap-4"
+                className="group font-body text-xs tracking-[0.25em] uppercase text-[#111111] font-semibold dark:text-champagne/80 dark:hover:text-champagne transition-colors duration-500 flex items-center gap-4"
               >
-                <span className="w-8 h-px bg-champagne/30 group-hover:w-12 transition-all duration-500" />
+                <span className="w-8 h-[1.5px] bg-[#111111] dark:bg-champagne/55 group-hover:w-12 transition-all duration-500" />
                 Understand the Difference
               </button>
             </div>

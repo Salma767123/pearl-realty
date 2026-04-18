@@ -58,9 +58,19 @@ const HeroSection = () => {
           : "bg-gradient-to-b from-black/40 via-background/70 to-background"
           }`}
           style={currentTheme === 'light' ? {
-            background: "linear-gradient(to bottom, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.28) 40%, rgba(0,0,0,0.32) 70%, rgba(0,0,0,0.42) 100%)"
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.36) 40%, rgba(0,0,0,0.35) 70%, rgba(0,0,0,0.40) 100%)"
           } : {}}
         />
+
+        {/* Radial spotlight — lifts text off the skyline in light mode */}
+        {currentTheme === 'light' && (
+          <div
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              background: "radial-gradient(circle at 50% 48%, rgba(255,255,255,0.22) 0%, transparent 68%)"
+            }}
+          />
+        )}
 
         {/* Soft Cloud/Moving Shadow Layer */}
         {currentTheme === 'light' && (
@@ -102,7 +112,25 @@ const HeroSection = () => {
         <div
           className={`transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
-          <span className="font-body text-xs font-bold tracking-[0.5em] uppercase text-gold">
+          <span
+            className="font-body text-xs uppercase"
+            style={currentTheme === 'light' ? {
+              color: "#e0a94bff",
+              fontWeight: 600,
+              letterSpacing: "0.28em",
+              textShadow: "0 2px 8px rgba(255,255,255,0.18)",
+              padding: "6px 14px",
+              // background: "rgba(255,255,255,0.18)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              borderRadius: "999px",
+              display: "inline-block",
+            } : {
+              fontWeight: 700,
+              letterSpacing: "0.5em",
+              color: "var(--color-gold)",
+            }}
+          >
             Private Wealth & Real Estate Advisory · Dubai
           </span>
         </div>
@@ -120,8 +148,20 @@ const HeroSection = () => {
 
         {/* Subtitle - Refined Contrast */}
         <p
-          className={`mt-10 max-w-2xl mx-auto font-body text-base md:text-xl [text-shadow:0_2px_10px_rgba(255,255,255,0.08)] ${currentTheme === 'light' ? "text-[#1a1a1a]/90 font-medium" : "text-foreground/70"
-            } leading-relaxed transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          className={`mt-10 max-w-2xl mx-auto font-body text-base md:text-xl leading-[1.7] transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          style={currentTheme === 'light' ? {
+            color: "#1A1A1A",
+            fontWeight: 500,
+            textShadow: "0 1px 8px rgba(255,255,255,0.14)",
+            maxWidth: "720px",
+            background: "rgba(255,255,255,0.22)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
+            padding: "12px 20px",
+            borderRadius: "18px",
+          } : {
+            color: "rgba(var(--foreground-rgb),0.70)",
+          }}
         >
           Trusted strategic guidance across real estate, portfolio growth, investments, assets, and generational wealth planning.
         </p>

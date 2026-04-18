@@ -51,10 +51,10 @@ const DoodleLine = ({ className = "", direction = "vertical" }: DoodleLineProps)
       <path
         ref={pathRef}
         d={paths[direction]}
-        stroke="hsl(40, 50%, 60%)"
-        strokeWidth="1"
+        className="stroke-black/20 dark:stroke-[hsl(40,50%,60%)] dark:opacity-40"
+        stroke="currentColor"
+        strokeWidth="1.2"
         strokeLinecap="round"
-        opacity="0.4"
       />
     </svg>
   );

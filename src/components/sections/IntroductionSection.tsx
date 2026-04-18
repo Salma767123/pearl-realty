@@ -217,7 +217,7 @@ const IntroductionSection = () => {
           className="text-center max-w-5xl"
         >
           <ScrollReveal>
-            <h2 className="font-display text-xs tracking-[0.6em] uppercase text-champagne mb-4 block">
+            <h2 className="font-display text-xs tracking-[0.6em] uppercase text-champagne/90 mb-4 block">
               Where Discretion Meets Legacy
             </h2>
           </ScrollReveal>
@@ -234,18 +234,18 @@ const IntroductionSection = () => {
 
             <motion.div
               whileHover={{ y: -10 }}
-              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.05] dark:border-white/5 shadow-sm backdrop-blur-sm group"
+              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.09] dark:border-white/5 shadow-sm backdrop-blur-sm group"
             >
               <div className="text-4xl lg:text-5xl font-display text-champagne mb-4">
                 <DynamicCounter value={4.2} prefix="$" suffix="T" />
               </div>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/70 leading-relaxed">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/80 leading-relaxed">
                 UHNWI Capital Migration <br />
-                <span className="text-champagne/80">BCG Global Wealth Report 2025</span>
+                <span className="text-champagne/90">BCG Global Wealth Report 2025</span>
               </p>
               {/* Animated growth line */}
               <motion.div
-                className="absolute bottom-0 left-0 h-[2px] bg-champagne/30"
+                className="absolute bottom-0 left-0 h-[2px] bg-champagne/55"
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 1.5, delay: 1 }}
@@ -254,17 +254,17 @@ const IntroductionSection = () => {
 
             <motion.div
               whileHover={{ y: -10 }}
-              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.05] dark:border-white/5 shadow-sm backdrop-blur-sm group"
+              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.09] dark:border-white/5 shadow-sm backdrop-blur-sm group"
             >
               <div className="text-4xl lg:text-5xl font-display text-champagne mb-4">
                 <DynamicCounter value={750} suffix="+" />
               </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/70 leading-relaxed">
                 Family Offices Registered <br />
-                <span className="text-champagne/80">Dubai International Financial Centre</span>
+                <span className="text-champagne/90">Dubai International Financial Centre</span>
               </p>
               <motion.div
-                className="absolute bottom-0 left-0 h-[2px] bg-champagne/30"
+                className="absolute bottom-0 left-0 h-[2px] bg-champagne/55"
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 1.5, delay: 1.2 }}
@@ -273,17 +273,17 @@ const IntroductionSection = () => {
 
             <motion.div
               whileHover={{ y: -10 }}
-              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.05] dark:border-white/5 shadow-sm backdrop-blur-sm group"
+              className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.09] dark:border-white/5 shadow-sm backdrop-blur-sm group"
             >
               <div className="text-4xl lg:text-5xl font-display text-champagne mb-4">
                 <DynamicCounter value={528} prefix="AED " suffix="B" />
               </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/70 leading-relaxed">
                 Transaction Volume (2023) <br />
-                <span className="text-champagne/80">Dubai Land Department</span>
+                <span className="text-champagne/90">Dubai Land Department</span>
               </p>
               <motion.div
-                className="absolute bottom-0 left-0 h-[2px] bg-champagne/30"
+                className="absolute bottom-0 left-0 h-[2px] bg-champagne/55"
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 transition={{ duration: 1.5, delay: 1.4 }}
@@ -307,7 +307,7 @@ const IntroductionSection = () => {
               </p>
             </div>
             <div className="lg:w-1/3 pt-4">
-              <div className="font-display text-sm tracking-widest text-champagne mb-4 uppercase">The Advisory Gap</div>
+              <div className="font-display text-sm tracking-widest text-champagne/90 mb-4 uppercase">The Advisory Gap</div>
               <p className="text-xs text-muted-foreground leading-loose uppercase tracking-[0.2em]">
                 No dominant, UHNWI-dedicated private real estate advisory brand exists in this market. PEARL REALTY fills this gap.
               </p>
