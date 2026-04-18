@@ -113,19 +113,19 @@ const OpportunitySection = () => {
             {/* Panel specific background glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${opt.color} to-transparent opacity-30 pointer-events-none`} />
 
-            <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-6 md:gap-16 items-center relative z-10 pt-24 md:pt-0">
 
               {/* Left Content */}
               <div className="flex flex-col items-start text-left">
-                <span className="font-body text-[10px] tracking-[0.5em] uppercase text-champagne mb-6 block">
+                <span className="font-body text-[8px] md:text-[10px] tracking-[0.5em] uppercase text-champagne mb-3 md:mb-6 block">
                   {opt.label}
                 </span>
 
-                <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-8">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-4 md:mb-8">
                   {opt.title}
                 </h2>
 
-                <p className="font-body text-base md:text-xl text-white/70 max-w-xl mb-12 leading-relaxed">
+                <p className="font-body text-sm md:text-xl text-white/70 max-w-xl mb-6 md:mb-12 leading-relaxed">
                   {opt.description}
                 </p>
 
@@ -143,21 +143,21 @@ const OpportunitySection = () => {
                   0{i + 1}
                 </span>
 
-                <div className="text-center md:text-right">
+                <div className="text-center md:text-right mt-2 md:mt-0">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="font-display text-7xl md:text-8xl lg:text-9xl text-gradient-gold mb-4"
+                    className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-gradient-gold mb-2 md:mb-4"
                   >
                     {opt.stat}
                   </motion.div>
-                  <p className="font-body text-xs md:text-sm tracking-[0.3em] uppercase text-champagne/60">
+                  <p className="font-body text-[10px] md:text-sm tracking-[0.3em] uppercase text-champagne/60">
                     {opt.statLabel}
                   </p>
 
                   {/* Aesthetic Graph line/Doodle Arrow placeholder */}
-                  <svg className="w-full max-w-[300px] mt-12 opacity-30 h-12 ml-auto" viewBox="0 0 300 50">
+                  <svg className="w-[80%] md:w-full max-w-[300px] mt-6 md:mt-12 opacity-30 h-8 md:h-12 mx-auto md:ml-auto md:mr-0" viewBox="0 0 300 50">
                     <motion.path
                       d="M0 45 L50 35 L100 40 L150 20 L200 25 L250 5 L300 0"
                       fill="none"
@@ -192,11 +192,11 @@ const OpportunitySection = () => {
       </div>
 
       {/* Intro Label (Centered first) */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none w-full px-6">
+      <div className="absolute top-[8%] md:top-[10%] left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none w-full px-6">
         <ScrollReveal>
-          <h3 className="font-display text-xs md:text-sm tracking-[0.8em] uppercase text-champagne mb-4">Market Timing</h3>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-5xl font-light text-white select-none">
-            Dubai. Now. <span className="text-gradient-gold">The Only Window</span>
+          <h3 className="font-display text-[10px] md:text-sm tracking-[0.8em] uppercase text-champagne mb-2 md:mb-4">Market Timing</h3>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-light text-white select-none leading-snug">
+            Dubai. Now. <br className="md:hidden" /><span className="text-gradient-gold">The Only Window</span>
           </h2>
         </ScrollReveal>
       </div>
