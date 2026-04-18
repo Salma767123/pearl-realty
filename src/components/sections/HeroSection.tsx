@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 import heroLight from "@/assets/hero-uae-light.png";
 import heroDark from "@/assets/hero-skyline.jpg";
 import SkylineDoodle from "@/components/SkylineDoodle";
@@ -27,22 +28,57 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <Image
-          src={heroImage}
-          alt="Luxury minimal architecture"
-          fill
-          priority
-          quality={100}
-          className="object-cover transition-opacity duration-1000 opacity-60 dark:opacity-40"
-          sizes="100vw"
+      {/* Background with Cinematic Parallax Zoom */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          animate={{ scale: [1, 1.08] }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear"
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={heroImage}
+            alt="Luxury minimal architecture"
+            fill
+            priority
+            quality={100}
+            className={`object-cover transition-opacity duration-1000 ${currentTheme === 'light' ? "opacity-85" : "opacity-40"
+              }`}
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* Premium Layered Shadow Overlay (Light Theme focus) */}
+        <div className={`absolute inset-0 transition-all duration-700 ${currentTheme === 'light'
+          ? "bg-gradient-to-bottom"
+          : "bg-gradient-to-b from-black/40 via-background/70 to-background"
+          }`}
+          style={currentTheme === 'light' ? {
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.18) 70%, rgba(0,0,0,0.28) 100%)"
+          } : {}}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-pearl/20 via-background/60 to-background dark:from-black/40 dark:via-background/70 dark:to-background" />
+
+        {/* Soft Cloud/Moving Shadow Layer */}
+        {currentTheme === 'light' && (
+          <motion.div
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: "100%", opacity: [0, 0.15, 0] }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute inset-0 pointer-events-none z-1 bg-gradient-to-r from-transparent via-white/5 to-transparent blur-[120px]"
+          />
+        )}
       </div>
 
       {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
@@ -58,50 +94,59 @@ const HeroSection = () => {
       </div>
 
       {/* Skyline Doodle */}
-      <SkylineDoodle className="bottom-0 left-0 w-full h-32 opacity-25" />
+      <SkylineDoodle className="bottom-0 left-0 w-full h-32 opacity-25 z-10" />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
+      <div className="relative z-20 text-center max-w-5xl mx-auto px-6">
         {/* Preheader */}
         <div
           className={`transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
-          <span className="font-body text-xs font-semibold tracking-[0.4em] uppercase text-gold">
+          <span className="font-body text-xs font-bold tracking-[0.5em] uppercase text-gold">
             Private Wealth & Real Estate Advisory · Dubai
           </span>
         </div>
 
-        {/* Brand */}
+        {/* Brand Heading - Graphite/Dark for Light Theme */}
         <h1
           ref={titleRef}
-          className={`mt-8 font-display text-3xl md:text-5xl lg:text-7xl font-semibold leading-tight tracking-tight transition-all duration-1200 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mt-10 font-display text-4xl md:text-6xl lg:text-8xl font-semibold leading-[1.1] tracking-tight transition-all duration-1200 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="block text-foreground">Build Legacy Where</span>
-          <span className="block mt-2 pb-2 text-gradient-gold">the World Invests</span>
+          <span className={`block ${currentTheme === 'light' ? "text-[#1a1a1a]" : "text-foreground"}`}>
+            Build Legacy Where
+          </span>
+          <span className="block mt-3 pb-2 text-gradient-gold">the World Invests</span>
         </h1>
 
-
-
-        {/* Subtitle */}
+        {/* Subtitle - Refined Contrast */}
         <p
-          className={`mt-8 max-w-2xl mx-auto font-body text-base md:text-lg text-charcoal/80 dark:text-foreground/70 leading-relaxed transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          className={`mt-10 max-w-2xl mx-auto font-body text-base md:text-xl ${currentTheme === 'light' ? "text-[#333333]/90 font-medium" : "text-foreground/70"
+            } leading-relaxed transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
           Trusted strategic guidance across real estate, portfolio growth, investments, assets, and generational wealth planning.
         </p>
 
-        {/* CTA */}
-        <div className={`mt-12 transition-all duration-1000 delay-[1500ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <MagneticButton onClick={scrollToContact} className="px-2 py-2 text-[11px] tracking-wider">
+        {/* CTA - Premium Glass-Morphism Outline */}
+        <div className={`mt-14 transition-all duration-1000 delay-[1500ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <MagneticButton
+            onClick={scrollToContact}
+            className={`px-12 py-4 text-[12px] tracking-[0.4em] font-semibold transition-all duration-500 rounded-full ${currentTheme === 'light'
+              ? "border-2 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white bg-white/10 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+              : ""
+              }`}
+          >
             Request Consultation
           </MagneticButton>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      {/* <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-all duration-1000 delay-[2000ms] ${loaded ? "opacity-60" : "opacity-0"}`}>
-        <div className="w-px h-16 bg-gradient-to-b from-champagne/40 to-transparent mx-auto" />
-        <span className="block mt-2 font-body text-[10px] tracking-[0.3em] uppercase text-champagne/40">Scroll</span>
-      </div> */}
+      <style jsx global>{`
+        @keyframes subtle-drift {
+          0% { transform: translateX(-10%); opacity: 0; }
+          50% { opacity: 0.1; }
+          100% { transform: translateX(10%); opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 };
