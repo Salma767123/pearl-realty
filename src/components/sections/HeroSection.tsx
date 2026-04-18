@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import heroLight from "@/assets/hero-uae-light.png";
 import SkylineDoodle from "@/components/SkylineDoodle";
 import MagneticButton from "@/components/MagneticButton";
