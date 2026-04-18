@@ -108,12 +108,12 @@ const OpportunitySection = () => {
         {opportunities.map((opt, i) => (
           <section
             key={opt.id}
-            className="relative w-full h-screen flex items-center px-6 md:px-20 lg:px-32"
+            className="relative w-full h-screen flex flex-col justify-end md:justify-center pb-[120px] md:pb-0 px-6 md:px-20 lg:px-32"
           >
             {/* Panel specific background glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${opt.color} to-transparent opacity-30 pointer-events-none`} />
 
-            <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-6 md:gap-16 items-center relative z-10 pt-24 md:pt-0">
+            <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-6 md:gap-16 items-center relative z-10">
 
               {/* Left Content */}
               <div className="flex flex-col items-start text-left">
@@ -195,7 +195,7 @@ const OpportunitySection = () => {
       <div className="absolute top-[8%] md:top-[10%] left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none w-full px-6">
         <ScrollReveal>
           <h3 className="font-display text-[10px] md:text-sm tracking-[0.8em] uppercase text-champagne mb-2 md:mb-4">Market Timing</h3>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-light text-white select-none leading-snug">
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-light text-white select-none leading-snug">
             Dubai. Now. <br className="md:hidden" /><span className="text-gradient-gold">The Only Window</span>
           </h2>
         </ScrollReveal>
