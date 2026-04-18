@@ -2,43 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import ScrollReveal from "@/components/ScrollReveal";
 
-// --- Magnetic Button Component ---
-const MagneticButton = ({ children, className, primary = false }: { children: React.ReactNode, className?: string, primary?: boolean }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLButtonElement>(null);
-
-  const handleMouse = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current?.getBoundingClientRect() || { height: 0, width: 0, left: 0, top: 0 };
-    const x = clientX - (left + width / 2);
-    const y = clientY - (top + height / 2);
-    setPosition({ x: x * 0.35, y: y * 0.35 });
-  };
-
-  const reset = () => {
-    setPosition({ x: 0, y: 0 });
-  };
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className={`relative group px-8 py-4 rounded-full font-body text-xs tracking-[0.3em] uppercase transition-colors duration-500 overflow-hidden ${primary
-        ? "bg-champagne text-white dark:text-background border border-transparent hover:bg-champagne/80 shadow-[0_2px_20px_-4px_hsla(38,45%,60%,0.5)] dark:shadow-[0_2px_20px_-4px_hsla(38,55%,47%,0.35)]"
-        : "bg-transparent text-charcoal/80 dark:text-foreground border border-charcoal/30 dark:border-white/10 hover:border-champagne hover:text-champagne dark:hover:border-champagne/50"
-        } ${className}`}
-    >
-      <span className="relative z-10">{children}</span>
-      {/* Glow effect for primary */}
-      {primary && (
-        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-      )}
-    </motion.button>
-  );
-};
+import MagneticButton from "@/components/MagneticButton";
 
 // --- Custom Phone UI Overlay ---
 // const PhoneUI = () => {
@@ -172,8 +136,8 @@ const CTASection = () => {
 
             <ScrollReveal delay={600}>
               <div className="flex flex-col sm:flex-row items-center gap-8">
-                <MagneticButton primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
-                <MagneticButton onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
+                <MagneticButton className="rounded-full" primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
+                <MagneticButton className="rounded-full" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
               </div>
             </ScrollReveal>
           </motion.div>
