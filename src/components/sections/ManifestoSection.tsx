@@ -272,6 +272,7 @@ const ManifestoSection = () => {
 
   return (
     <section
+      id="manifesto"
       ref={sectionRef}
       className="relative flex items-center py-12 md:py-16 overflow-hidden bg-background"
     >

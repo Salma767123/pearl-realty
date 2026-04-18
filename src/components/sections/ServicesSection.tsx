@@ -135,7 +135,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Footer CTA */}
-        <ScrollReveal delay={1000}>
+        {/* <ScrollReveal delay={1000}>
           <div className="mt-32 text-center border-t border-charcoal/20 dark:border-charcoal/15 pt-16">
             <button
               onClick={() => document.getElementById("clients")?.scrollIntoView({ behavior: "smooth" })}
@@ -145,7 +145,7 @@ const ServicesSection = () => {
               Explore Global Clientele
             </button>
           </div>
-        </ScrollReveal>
+        </ScrollReveal> */}
       </div>
     </section>
   );

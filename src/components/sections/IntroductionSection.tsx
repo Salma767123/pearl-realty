@@ -317,7 +317,7 @@ const IntroductionSection = () => {
 
         <div className="mt-10 flex justify-center">
           <ScrollReveal delay={600}>
-            <MagneticButton className="mx-auto">
+            <MagneticButton className="mx-auto" onClick={() => document.getElementById("manifesto")?.scrollIntoView({ behavior: "smooth" })}>
               Discover the Opportunity
             </MagneticButton>
           </ScrollReveal>
