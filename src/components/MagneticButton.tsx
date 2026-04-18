@@ -1,4 +1,4 @@
-import { useRef, MouseEvent, ReactNode } from "react";
+import { ReactNode } from "react";
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -8,42 +8,25 @@ interface MagneticButtonProps {
 }
 
 const MagneticButton = ({ children, className = "", onClick, primary = false }: MagneticButtonProps) => {
-  const btnRef = useRef<HTMLButtonElement>(null);
-
-  const handleMouseMove = (e: MouseEvent) => {
-    const btn = btnRef.current;
-    if (!btn) return;
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-  };
-
-  const handleMouseLeave = () => {
-    const btn = btnRef.current;
-    if (btn) btn.style.transform = "translate(0, 0)";
-  };
-
   return (
-    <div
-      ref={btnRef as any}
-      onMouseMove={handleMouseMove as any}
-      onMouseLeave={handleMouseLeave}
+    <button
       onClick={onClick}
-      style={{ isolation: "isolate" }}
-      className={`magnetic-btn font-body text-xs tracking-[0.3em] uppercase px-10 py-5 font-semibold transition-all duration-500 overflow-hidden relative group cursor-pointer ${
+      className={`relative z-20 group font-body text-xs tracking-[0.3em] uppercase px-10 py-5 font-semibold transition-all duration-300 ease-out overflow-hidden cursor-pointer pointer-events-auto hover:-translate-y-[2px] hover:scale-[1.02] ${
         primary
-          ? // Primary: solid champagne pill — works on both light & dark
-            "bg-champagne text-charcoal dark:text-background border border-transparent hover:bg-champagne/80 shadow-[0_2px_24px_-4px_hsla(38,45%,52%,0.5)] dark:shadow-[0_2px_20px_-4px_hsla(38,55%,47%,0.35)]"
-          : // Secondary: visible on light bg, visible on dark bg
-            "border-2 border-charcoal/60 dark:border-champagne/30 text-charcoal dark:text-champagne hover:border-champagne hover:text-champagne dark:hover:border-champagne/60 bg-transparent"
+          ? "bg-champagne text-charcoal dark:text-background border border-transparent shadow-[0_4px_20px_-4px_hsla(38,45%,52%,0.4)] dark:shadow-[0_2px_20px_-4px_hsla(38,55%,47%,0.35)] hover:shadow-[0_12px_30px_-4px_hsla(38,45%,52%,0.6)]"
+          : "border-2 border-charcoal/60 dark:border-champagne/30 text-charcoal dark:text-champagne hover:border-champagne hover:text-champagne dark:hover:border-champagne/60 hover:bg-champagne/5 hover:shadow-[0_0_15px_-3px_hsla(38,45%,52%,0.2)] bg-transparent"
       } ${className}`}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 pointer-events-none">{children}</span>
+      
+      {/* Decorative Shimmer / Glow Overlays - Pointer Events MUST be none */}
       {primary && (
-        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <>
+          <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+          <div className="absolute inset-0 -translate-x-[150%] skew-x-[25deg] w-[150%] bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer-sweep_1.5s_ease-in-out_infinite] pointer-events-none blur-[2px]" />
+        </>
       )}
-    </div>
+    </button>
   );
 };
 
