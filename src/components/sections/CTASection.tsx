@@ -172,8 +172,8 @@ const CTASection = () => {
 
             <ScrollReveal delay={600}>
               <div className="flex flex-col sm:flex-row items-center gap-8">
-                <MagneticButton primary>Book Private Consultation</MagneticButton>
-                <MagneticButton>Request Access</MagneticButton>
+                <MagneticButton primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
+                <MagneticButton onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
               </div>
             </ScrollReveal>
           </motion.div>
