@@ -64,7 +64,7 @@ const OpportunitySection = () => {
         sectionRef.current,
         { x: 0 },
         {
-          x: "-300vw",
+          x: "-75%",
           ease: "none",
           scrollTrigger: {
             trigger: triggerRef.current,
@@ -91,7 +91,7 @@ const OpportunitySection = () => {
     <div ref={triggerRef} className="overflow-hidden bg-charcoal-deep text-white dark">
       <div
         ref={sectionRef}
-        className="relative h-screen flex flex-row items-center w-[400vw]"
+        className="relative h-screen flex flex-row items-center w-[400%]"
       >
         {/* Cinematic Background (Shared across all panels) */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -108,7 +108,7 @@ const OpportunitySection = () => {
         {opportunities.map((opt, i) => (
           <section
             key={opt.id}
-            className="relative w-screen h-screen flex items-center px-6 md:px-20 lg:px-32"
+            className="relative w-full h-screen flex items-center px-6 md:px-20 lg:px-32"
           >
             {/* Panel specific background glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${opt.color} to-transparent opacity-30 pointer-events-none`} />
@@ -183,10 +183,10 @@ const OpportunitySection = () => {
         ))}
 
         {/* Dubai Skyline Sketch Background (Parallaxed horizontally) */}
-        <div className="absolute bottom-10 left-0 w-[400vw] h-64 opacity-10 pointer-events-none z-0">
-          <svg viewBox="0 0 4000 200" className="w-full h-full fill-none stroke-champagne/50 stroke-[0.5]">
+        <div className="absolute bottom-10 left-0 w-[100%] h-64 opacity-10 pointer-events-none z-0">
+          <svg className="w-full h-full" viewBox="0 0 1000 200" preserveAspectRatio="none">
             {/* Abstract continuous skyline */}
-            <path d="M0 200 L100 200 L100 150 L150 150 L150 100 L200 100 L200 200 L500 200 L500 50 L550 0 L600 50 L600 200 L1000 200 L1000 80 L1100 80 L1100 200 L2000 200 L2000 120 L2100 20 L2200 120 L2200 200 L3000 200 L3500 50 L3600 200 L4000 200" />
+            <path d="M0 200 L100 200 L100 150 L150 150 L150 100 L200 100 L200 200 L500 200 L500 50 L550 0 L600 50 L600 200 L1000 200 L1000 80 L1100 80 L1100 200 L2000 200 L2000 120 L2100 20 L2200 120 L2200 200 L3000 200 L3500 50 L3600 200 L4000 200" className="fill-none stroke-champagne/50 stroke-[0.5]" />
           </svg>
         </div>
       </div>
