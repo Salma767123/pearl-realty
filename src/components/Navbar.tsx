@@ -236,15 +236,6 @@ const Navbar = () => {
 
 /* ── Hamburger Button ── */
 const HamburgerButton = ({ open, onClick }: { open: boolean; onClick: () => void }) => {
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isLight = mounted && (resolvedTheme === 'light' || theme === 'light');
-
   return (
     <button
       onClick={onClick}
@@ -252,16 +243,13 @@ const HamburgerButton = ({ open, onClick }: { open: boolean; onClick: () => void
       className="w-11 h-11 flex flex-col justify-center items-center gap-[6px] group transition-all duration-300"
     >
       <span
-        className={`block w-6 transition-all duration-400 origin-center ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:-rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-          } ${open ? (isLight ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : "rotate-45 translate-y-[7px]") : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:-rotate-3 ${open ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : ""}`}
       />
       <span
-        className={`block transition-all duration-400 ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A]" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-          } ${open ? "w-0 opacity-0" : "w-4"}`}
+        className={`block transition-all duration-400 h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] ${open ? "w-0 opacity-0" : "w-4"}`}
       />
       <span
-        className={`block w-6 transition-all duration-400 origin-center ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-          } ${open ? (isLight ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : "-rotate-45 -translate-y-[7px]") : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:rotate-3 ${open ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : ""}`}
       />
     </button>
   );
