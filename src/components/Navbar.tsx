@@ -62,8 +62,8 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
           {/* Logo */}
-          <button 
-            onClick={() => window.location.pathname === "/" ? scrollTo("hero") : window.location.href = "/"} 
+          <button
+            onClick={() => window.location.pathname === "/" ? scrollTo("hero") : window.location.href = "/"}
             className="flex items-center"
           >
             <Image
@@ -75,17 +75,17 @@ const Navbar = () => {
             />
           </button>
 
-            {/* Desktop right: Book Consultation + toggle + hamburger */}
-            <div className="hidden md:flex items-center gap-4">
-              <button
-                onClick={() => scrollTo("contact")}
-                className="relative px-6 py-3 rounded-full font-body text-[10px] tracking-[0.3em] uppercase font-medium transition-all duration-300 group overflow-hidden border border-[#C7A56A] text-[#C7A56A] hover:border-[#C7A56A] hover:shadow-[0_0_15px_rgba(199,165,106,0.3)]"
-              >
-                <div className="absolute inset-0 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 bg-[#C7A56A]" />
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-[#111111]">
-                  Book Consultation
-                </span>
-              </button>
+          {/* Desktop right: Book Consultation + toggle + hamburger */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={() => scrollTo("contact")}
+              className="relative px-6 py-3 rounded-full font-body text-[10px] tracking-[0.3em] uppercase font-medium transition-all duration-300 group overflow-hidden border border-[#C7A56A] text-[#C7A56A] hover:border-[#C7A56A] hover:shadow-[0_0_15px_rgba(199,165,106,0.3)]"
+            >
+              <div className="absolute inset-0 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 bg-[#C7A56A]" />
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-[#111111]">
+                Book Consultation
+              </span>
+            </button>
             <div className="w-px h-4 bg-champagne/30" />
             <ThemeToggle />
             <div className="w-px h-4 bg-champagne/20" />
@@ -246,37 +246,30 @@ const Navbar = () => {
 const HamburgerButton = ({ open, onClick }: { open: boolean; onClick: () => void }) => {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   const isLight = mounted && (resolvedTheme === 'light' || theme === 'light');
 
   return (
     <button
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
-      className={`w-11 h-11 flex flex-col justify-center items-center gap-[6px] group rounded-full transition-all duration-300 ${
-        isLight
-          ? "bg-[rgba(255,255,255,0.35)] border border-[rgba(0,0,0,0.08)] hover:shadow-md hover:bg-[rgba(255,255,255,0.5)]"
-          : ""
-      }`}
+      className="w-11 h-11 flex flex-col justify-center items-center gap-[6px] group transition-all duration-300"
     >
       <span
-        className={`block w-6 transition-all duration-400 origin-center ${
-          isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:-rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-        } ${open ? (isLight ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : "rotate-45 translate-y-[7px]") : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:-rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
+          } ${open ? (isLight ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : "rotate-45 translate-y-[7px]") : ""}`}
       />
       <span
-        className={`block transition-all duration-400 ${
-          isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A]" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-        } ${open ? "w-0 opacity-0" : "w-4"}`}
+        className={`block transition-all duration-400 ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A]" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
+          } ${open ? "w-0 opacity-0" : "w-4"}`}
       />
       <span
-        className={`block w-6 transition-all duration-400 origin-center ${
-          isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
-        } ${open ? (isLight ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : "-rotate-45 -translate-y-[7px]") : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center ${isLight ? "h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:rotate-3" : "h-[1.5px] bg-foreground/60 group-hover:bg-champagne"
+          } ${open ? (isLight ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : "-rotate-45 -translate-y-[7px]") : ""}`}
       />
     </button>
   );
