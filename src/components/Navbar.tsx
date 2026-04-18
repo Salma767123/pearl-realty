@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import logo from "@/assets/logo.png";
+import lightLogo from "@/assets/light_logo.png";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
@@ -22,8 +24,11 @@ const SOCIAL_LINKS = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -62,7 +67,7 @@ const Navbar = () => {
             className="flex items-center"
           >
             <Image
-              src={logo}
+              src={mounted && (resolvedTheme === 'light' || theme === 'light') ? lightLogo : logo}
               alt="Pearl Legacy"
               width={150}
               height={50}
