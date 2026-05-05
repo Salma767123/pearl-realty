@@ -68,14 +68,14 @@ const InsightsSection = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="max-w-2xl">
             <ScrollReveal>
-              <span className="font-body text-[10px] tracking-[0.6em] uppercase text-champagne/95 mb-4 block font-semibold">
+              <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold mb-4 block font-semibold">
                 Market Intelligence
               </span>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <h2 className="font-display text-4xl md:text-6xl font-light leading-tight text-foreground">
-                The Intelligence <br />
-                <span className="text-gradient-gold">Ledger</span>
+                Perspectives on <br />
+                <span className="text-gradient-gold">Dubai</span>
               </h2>
             </ScrollReveal>
           </div>

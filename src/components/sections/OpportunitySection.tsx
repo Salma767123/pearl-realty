@@ -108,7 +108,7 @@ const OpportunitySection = () => {
         {opportunities.map((opt, i) => (
           <section
             key={opt.id}
-            className="relative w-full h-screen flex flex-col justify-end md:justify-center pb-[120px] md:pb-0 px-6 md:px-20 lg:px-32"
+            className="relative w-full h-screen flex flex-col justify-center pb-0 px-6 md:px-20 lg:px-32"
           >
             {/* Panel specific background glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${opt.color} to-transparent opacity-30 pointer-events-none`} />
@@ -139,7 +139,7 @@ const OpportunitySection = () => {
               {/* Right Visualization */}
               <div className="relative flex flex-col justify-center items-center md:items-end dark">
                 {/* Large Ambient Number */}
-                <span className="absolute -top-20 -right-10 md:-right-20 font-display text-[15vw] md:text-[10vw] text-white/[0.03] select-none pointer-events-none">
+                <span className="absolute -top-10 md:-top-20 -right-5 md:-right-20 font-display text-[25vw] md:text-[10vw] text-white/[0.03] select-none pointer-events-none">
                   0{i + 1}
                 </span>
 
@@ -148,7 +148,7 @@ const OpportunitySection = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-gradient-gold mb-2 md:mb-4"
+                    className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-gradient-gold mb-2 md:mb-4"
                   >
                     {opt.stat}
                   </motion.div>
@@ -194,7 +194,7 @@ const OpportunitySection = () => {
       {/* Intro Label (Centered first) */}
       <div className="absolute top-[8%] md:top-[10%] left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none w-full px-6">
         <ScrollReveal>
-          <h3 className="font-display text-[10px] md:text-sm tracking-[0.8em] uppercase text-champagne mb-2 md:mb-4">Market Timing</h3>
+          <h3 className="font-display text-[10px] md:text-sm tracking-[0.8em] uppercase text-gold mb-2 md:mb-4">Market Timing</h3>
           <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-light text-white select-none leading-snug">
             Dubai. Now. <br className="md:hidden" /><span className="text-gradient-gold">The Only Window</span>
           </h2>

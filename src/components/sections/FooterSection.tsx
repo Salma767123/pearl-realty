@@ -23,7 +23,7 @@ const FooterSection = () => {
     <footer className="relative pt-32 pb-16 overflow-hidden" style={{ background: "linear-gradient(180deg, #14140F 0%, #0E0E0B 100%)" }}>
       {/* Cinematic Background Branding */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none z-0">
-        <h2 className="font-display text-[25vw] leading-none select-none uppercase tracking-tighter" style={{ color: "rgba(199,165,106,0.04)" }}>
+        <h2 className="font-display text-[22vw] sm:text-[25vw] leading-none select-none uppercase tracking-tighter" style={{ color: "rgba(199,165,106,0.04)" }}>
           Pearl
         </h2>
       </div>
@@ -97,16 +97,16 @@ const FooterSection = () => {
         </div>
 
         {/* Global Compliance Bar */}
-        <div className="pt-12 border-t border-champagne/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-8">
-            <p className="font-body text-[10px] tracking-widest text-white/25 uppercase italic">
+        <div className="pt-12 border-t border-champagne/10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
+            <p className="font-body text-[9px] md:text-[10px] tracking-widest text-white/25 uppercase italic">
               Strictly Private & Confidential
             </p>
-            <p className="font-body text-[10px] tracking-widest text-white/25 uppercase">
+            <p className="font-body text-[9px] md:text-[10px] tracking-widest text-white/25 uppercase">
               Authorised Access Only
             </p>
           </div>
-          <p className="font-body text-[10px] tracking-widest text-white/25">
+          <p className="font-body text-[9px] md:text-[10px] tracking-widest text-white/25">
             © 2026 Pearl Realty Group · Integrated Advisory
           </p>
         </div>

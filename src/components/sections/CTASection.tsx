@@ -122,22 +122,22 @@ const CTASection = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <h2 className="font-display text-5xl md:text-7xl lg:text-7xl font-light leading-[1] text-foreground mb-10">
-                Your Next Move, <br />
+              <h2 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-7xl font-light leading-[1.2] md:leading-[1] text-foreground mb-6 md:mb-10">
+                Your Next Move, <br className="hidden md:block" />
                 <span className="text-gradient-gold">Handled Privately</span>
               </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <p className="font-body text-base md:text-xl text-foreground max-w-2xl mb-14 leading-relaxed font-light">
+              <p className="font-body text-sm md:text-xl text-foreground max-w-2xl mb-10 md:mb-14 leading-relaxed font-light px-4">
                 Secure landmark assets with the silence and strategic foresight your legacy deserves. The unseen market awaits your command.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={600}>
-              <div className="flex flex-col sm:flex-row items-center gap-8">
-                <MagneticButton className="rounded-full" primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
-                <MagneticButton className="rounded-full" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
+              <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
+                <MagneticButton className="rounded-full w-full sm:w-auto" primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
+                <MagneticButton className="rounded-full w-full sm:w-auto" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
               </div>
             </ScrollReveal>
           </motion.div>
@@ -145,10 +145,10 @@ const CTASection = () => {
           {/* Hero: The Interactive Phone (Centered Bottom) */}
           <motion.div
             style={{ y: phoneY }}
-            className="relative w-full flex justify-center items-start -mt-20 -mb-40"
+            className="relative w-full flex justify-center items-start -mt-10 md:-mt-20 -mb-20 md:-mb-40"
           >
             <motion.div
-              className="relative w-[320px] h-[640px] md:w-[480px] md:h-[960px]"
+              className="relative w-[280px] h-[560px] md:w-[480px] md:h-[960px]"
               animate={{
                 y: [0, -20, 0],
                 rotate: [-0.5, 0.5, -0.5]

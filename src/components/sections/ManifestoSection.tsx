@@ -212,7 +212,7 @@ const PhilosophyPoint = ({
   return (
     <div
       ref={ref}
-      className="relative pl-10 md:pl-14 transition-all duration-700"
+      className="relative pl-6 md:pl-14 transition-all duration-700"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
@@ -224,7 +224,7 @@ const PhilosophyPoint = ({
       />
 
       {/* Label chip */}
-      <span className="font-body text-[10px] tracking-[0.35em] uppercase text-[#222222] font-semibold dark:text-champagne/75 dark:font-normal">
+      <span className="font-body text-[10px] tracking-[0.35em] uppercase text-gold font-semibold dark:text-champagne/75 dark:font-normal">
         {point.label}
       </span>
 
@@ -304,13 +304,13 @@ const ManifestoSection = () => {
           <div className="md:col-span-7 relative">
             {/* Section label */}
             <div className="mb-2">
-              <span className="font-body text-[10px] tracking-[0.5em] uppercase text-[#222222] font-semibold dark:text-champagne/70 dark:font-normal">
+              <span className="font-body text-[10px] tracking-[0.5em] uppercase text-gold font-semibold dark:font-normal">
                 Our Philosophy
               </span>
             </div>
 
             {/* Heading with letter reveal */}
-            <h2 className="font-display text-4xl md:text-5xl lg:text-5xl font-light leading-[1.1] tracking-tight">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-5xl font-light leading-[1.1] tracking-tight">
               <LetterReveal text="Not a Broker." className="inline-block text-foreground mr-4" />
               <LetterReveal
                 text="A Counsel."
@@ -336,14 +336,14 @@ const ManifestoSection = () => {
             </div>
 
             {/* CTA */}
-            <div className="mt-12 pl-10 md:pl-14">
+            <div className="mt-12 pl-6 md:pl-14">
               <button
                 onClick={() =>
                   document
                     .getElementById("founder")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group font-body text-xs tracking-[0.25em] uppercase text-[#111111] font-semibold dark:text-champagne/80 dark:hover:text-champagne transition-colors duration-500 flex items-center gap-4"
+                className="group font-body text-xs tracking-[0.25em] uppercase text-gold font-semibold dark:text-champagne/80 dark:hover:text-champagne transition-colors duration-500 flex items-center gap-4"
               >
                 <span className="w-8 h-[1.5px] bg-[#111111] dark:bg-champagne/55 group-hover:w-12 transition-all duration-500" />
                 Understand the Difference
@@ -372,7 +372,7 @@ const ManifestoSection = () => {
               }}
             >
               <div
-                className="relative w-full max-w-none lg:-ml-12 h-[500px] md:h-[750px] lg:h-[900px] mx-auto md:mr-0 origin-bottom-right"
+                className="relative w-full max-w-none lg:-ml-12 h-[380px] md:h-[750px] lg:h-[900px] mx-auto md:mr-0 origin-bottom-right"
                 style={{ filter: "drop-shadow(0 0 50px hsl(40, 50%, 60%, 0.15))" }}
               >
                 <Image

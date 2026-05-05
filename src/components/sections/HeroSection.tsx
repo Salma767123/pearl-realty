@@ -95,17 +95,17 @@ const HeroSection = () => {
       <SkylineDoodle className="bottom-0 left-0 w-full h-32 opacity-25 z-10" />
 
       {/* Content */}
-      <div className="relative z-20 text-center max-w-5xl mx-auto px-6 flex flex-col items-center">
+      <div className="relative z-20 text-center max-w-5xl mx-auto px-6 flex flex-col items-center pt-24 md:pt-0">
         {/* Preheader */}
         <div
           className={`transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
         >
           <span
-            className="font-body text-xs uppercase"
+            className="font-body text-[10px] sm:text-xs uppercase"
             style={{
               color: "#e0a94bff",
               fontWeight: 600,
-              letterSpacing: "0.28em",
+              letterSpacing: typeof window !== 'undefined' && window.innerWidth < 640 ? "0.15em" : "0.28em",
               textShadow: "0 2px 8px rgba(255,255,255,0.18)",
               padding: "6px 14px",
               backdropFilter: "blur(8px)",
@@ -121,17 +121,17 @@ const HeroSection = () => {
         {/* Brand Heading - Graphite/Dark for Light Theme */}
         <h1
           ref={titleRef}
-          className={`mt-10 font-display text-4xl md:text-6xl lg:text-8xl font-semibold leading-[1.1] tracking-tight transition-all duration-1200 delay-700 [text-shadow:0_2px_10px_rgba(255,255,255,0.08)] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mt-6 md:mt-10 font-display text-4xl sm:text-4xl md:text-6xl lg:text-8xl font-semibold leading-[1.2] md:leading-[1.1] tracking-tight transition-all duration-1200 delay-700 [text-shadow:0_2px_10px_rgba(255,255,255,0.08)] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           <span className="block text-[#0a0a0a]">
             Build Legacy Where
           </span>
-          <span className="block mt-3 pb-2 text-gradient-gold">the World Invests</span>
+          <span className="block mt-2 md:mt-3 pb-2 text-gradient-gold">the World Invests</span>
         </h1>
 
         {/* Subtitle - Refined Contrast */}
         <p
-          className={`mt-10 max-w-2xl mx-auto font-body text-base md:text-xl leading-[1.7] transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          className={`mt-10 max-w-2xl mx-auto font-body text-[9px] md:text-xl leading-[1.7] transition-all duration-1000 delay-[1200ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           style={{
             color: "#1A1A1A",
             fontWeight: 500,
@@ -151,11 +151,11 @@ const HeroSection = () => {
         <div className={`mt-14 w-full flex justify-center transition-all duration-1000 delay-[1500ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <MagneticButton
             onClick={scrollToContact}
-            className="group w-[90%] md:w-full md:max-w-[420px] !h-[62px] flex items-center justify-center font-bold !text-[#111111] hover:!text-[#111111] !border !border-[rgba(255,255,255,0.15)] !bg-[linear-gradient(135deg,#C7A56A,#D8B97F)] rounded-full transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(199,165,106,0.3)] !px-0 !py-0"
+            className="group w-[70%] sm:w-[70%] md:w-full md:max-w-[420px] !h-[48px] md:!h-[62px] flex items-center justify-center font-bold !text-[#111111] hover:!text-[#111111] !border !border-[rgba(255,255,255,0.15)] !bg-[linear-gradient(135deg,#C7A56A,#D8B97F)] rounded-full transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(199,165,106,0.3)] !px-0 !py-0"
           >
             {/* Shimmer overlay element */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[100%] group-hover:animate-[shimmer-sweep_1.5s_ease-in-out] z-0" />
-            <span className="relative z-10 flex items-center justify-center w-full h-full text-[12px] tracking-[0.4em]">REQUEST CONSULTATION</span>
+            <span className="relative z-10 flex items-center justify-center w-full h-full text-[8px] md:text-[12px] tracking-[0.3em] md:tracking-[0.4em]">REQUEST CONSULTATION</span>
           </MagneticButton>
         </div>
       </div>

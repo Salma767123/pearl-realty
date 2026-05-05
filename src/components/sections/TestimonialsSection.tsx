@@ -97,7 +97,7 @@ const TestimonialsSection = () => {
         {/* Header Content */}
         <div className="max-w-4xl mx-auto mb-20">
           <ScrollReveal>
-            <span className="font-body text-xs tracking-[0.5em] uppercase text-champagne/90 font-semibold">
+            <span className="font-body text-xs tracking-[0.5em] uppercase text-gold font-semibold">
               The Architecture of Trust
             </span>
           </ScrollReveal>

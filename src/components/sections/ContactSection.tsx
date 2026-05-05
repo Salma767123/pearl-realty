@@ -1,131 +1,98 @@
-import { useState, FormEvent } from "react";
-import ScrollReveal from "@/components/ScrollReveal";
-import MagneticButton from "@/components/MagneticButton";
+"use client";
+
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import ContactBackground from "../ContactBackground";
+import ContactForm from "../ContactForm";
+import ContactInfoWall from "../ContactInfoWall";
+// import ContactTicker from "../ContactTicker";
 
 const ContactSection = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const headlineVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+    }
   };
 
   return (
-    <section id="contact" className="relative min-h-screen py-32 overflow-hidden bg-ivory dark:bg-background">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-champagne/[0.15] blur-[150px]" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-beige/80 dark:bg-card/20 blur-[100px]" />
+    <section
+      id="contact"
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col overflow-hidden bg-[#F8F4EC]"
+    >
+      <ContactBackground />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <ScrollReveal>
-          <span className="font-body text-xs tracking-[0.4em] uppercase text-champagne/90 font-semibold">
-            Private Access
-          </span>
-        </ScrollReveal>
+      <div className="relative z-10 max-w-[1440px] mx-auto px-8 md:px-12 lg:px-24 pt-20 pb-16 w-full">
 
-        <ScrollReveal delay={200}>
-          <h2 className="mt-8 font-display text-4xl md:text-6xl font-light leading-tight text-foreground">
-            Enter{" "}
-            <span className="text-gradient-gold">the Circle</span>
-          </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={400}>
-          <p className="mt-6 font-body text-sm text-muted-foreground max-w-lg">
-            Every engagement begins with a private conversation. Share your details below.
-            Handled with absolute discretion.
-          </p>
-        </ScrollReveal>
-
-        {submitted ? (
-          <ScrollReveal>
-            <div className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-12 text-center border border-black/[0.10] dark:border-white/5 shadow-[0_4px_40px_-8px_rgba(0,0,0,0.1)]">
-              <h3 className="font-display text-2xl text-foreground">Thank you.</h3>
-              <p className="mt-4 font-body text-sm text-muted-foreground">
-                Your request has been received. We will be in touch within 48 hours.
-              </p>
+        {/* Header Section */}
+        <div className="mb-12">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={headlineVariants}
+            className="flex flex-col gap-2"
+          >
+            <div className="overflow-hidden">
+              <motion.h2
+                className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.9] text-[#111111] uppercase"
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              >
+                GAIN
+              </motion.h2>
             </div>
-          </ScrollReveal>
-        ) : (
-          <ScrollReveal delay={600}>
-            <form onSubmit={handleSubmit} className="mt-16 bg-white/80 dark:bg-card/40 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-black/[0.10] dark:border-white/5 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
-                    placeholder="Full name"
-                  />
-                </div>
-                <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500 placeholder:text-foreground/30"
-                    placeholder="+971 ..."
-                  />
-                </div>
-                <div>
-                  <label className="block font-body text-xs tracking-[0.2em] uppercase text-foreground/70 mb-3 font-medium">
-                    Investment Interest
-                  </label>
-                  <select
-                    className="w-full bg-transparent border-b border-foreground/30 focus:border-champagne outline-none py-3 font-body text-sm text-foreground transition-colors duration-500"
-                  >
-                    <option value="" className="bg-background">Select range</option>
-                    <option value="5-10" className="bg-background">$5M – $10M</option>
-                    <option value="10-25" className="bg-background">$10M – $25M</option>
-                    <option value="25-50" className="bg-background">$25M – $50M</option>
-                    <option value="50+" className="bg-background">$50M+</option>
-                  </select>
-                </div>
-              </div>
 
-              <div className="mt-12 flex flex-col items-center gap-6">
-                <MagneticButton>Enter the Circle</MagneticButton>
-                <p className="font-body text-[10px] tracking-wider uppercase text-foreground/55 font-medium">
-                  Handled with absolute discretion
-                </p>
-              </div>
-            </form>
-          </ScrollReveal>
-        )}
+            <div className="overflow-hidden">
+              <motion.h2
+                className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.9] uppercase bg-gradient-to-r from-[#C7A56A] via-[#9E7A43] to-[#C7A56A] bg-clip-text text-transparent group relative"
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                PRIVATE ACCESS
+                {/* Gold Shimmer Sweep */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                  animate={{ x: ["-100%", "200%"] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
+                />
+              </motion.h2>
+            </div>
 
-        {/* Direct contact */}
-        <ScrollReveal delay={800}>
-          <div className="mt-16 flex flex-wrap justify-center gap-10 text-center">
-            <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Email</p>
-              <p className="font-body text-sm text-foreground/80">advisory@pearlrealty.ae</p>
-            </div>
-            <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Phone</p>
-              <p className="font-body text-sm text-foreground/80">+971 4 XXX XXXX</p>
-            </div>
-            <div>
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 font-medium">Location</p>
-              <p className="font-body text-sm text-foreground/80">DIFC, Dubai, UAE</p>
-            </div>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="mt-8 max-w-2xl font-body text-base md:text-lg text-[#111111]/70 leading-relaxed"
+            >
+              Direct connection for UAE real estate, strategic investments, portfolio growth, and private advisory.
+            </motion.p>
+          </motion.div>
+        </div>
+
+        {/* Rigid Equal-Height Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch gap-12 md:gap-16 lg:gap-24">
+
+          {/* Left Side: Stretched & Balanced Info Wall */}
+          <div className="h-full flex flex-col py-12 md:py-16">
+            <ContactInfoWall />
           </div>
-        </ScrollReveal>
+
+          {/* Right Side: Centered Form Slab */}
+          <div className="h-full flex flex-col justify-center">
+            <ContactForm />
+          </div>
+        </div>
       </div>
+
+      {/* <ContactTicker /> */}
     </section>
   );
 };

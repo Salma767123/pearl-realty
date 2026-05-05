@@ -210,22 +210,22 @@ const IntroductionSection = () => {
       </motion.div>
 
       {/* 3. FOREGROUND LAYER: Content & Dynamic Stats */}
-      <div className="relative z-20 container mx-auto px-6 flex flex-col justify-start items-center pt-24 md:pt-12 pb-20">
+      <div className="relative z-20 container mx-auto px-6 flex flex-col justify-start items-center pt-16 md:pt-24 pb-16 md:pb-20">
 
         <motion.div
           style={{ rotateX: springY, rotateY: springX, y: textY }}
           className="text-center max-w-5xl"
         >
           <ScrollReveal>
-            <h2 className="font-display text-xs tracking-[0.6em] uppercase text-champagne/90 mb-4 block">
+            <h2 className="font-display text-[9px] md:text-xs tracking-[0.4em] md:tracking-[0.6em] uppercase text-gold mb-4 block">
               Where Discretion Meets Legacy
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 text-foreground">
-              A quiet but powerful shift is<br />
-              <span className="text-gradient-gold">reshaping global wealth</span>
+            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 text-foreground px-2">
+              A quiet but powerful shift is<br className="hidden md:block" />
+              <span className="text-gradient-gold"> reshaping global wealth</span>
             </h1>
           </ScrollReveal>
 
@@ -329,14 +329,14 @@ const IntroductionSection = () => {
         <motion.path
           d="M20 20 Q100 0 180 180"
           stroke="currentColor"
-          className="text-champagne"
+          className="text-gold"
           strokeWidth="1"
           fill="none"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           transition={{ duration: 2 }}
         />
-        <path d="M170 160 L180 180 L160 175" stroke="currentColor" className="text-champagne" fill="none" />
+        <path d="M170 160 L180 180 L160 175" stroke="currentColor" className="text-gold" fill="none" />
       </svg>
 
     </section>

@@ -106,15 +106,15 @@ const ServicesSection = () => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-beige/80 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mb-24">
+        <div className="max-w-3xl mb-12 md:mb-24">
           <ScrollReveal>
-            <span className="font-body text-[10px] tracking-[0.6em] uppercase text-[#222222] font-semibold dark:text-champagne/90 dark:font-normal mb-4 block">
+            <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold font-semibold dark:text-champagne/90 dark:font-normal mb-4 block">
               Value Pillars
             </span>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <h2 className="font-display text-4xl md:text-6xl font-light leading-tight text-charcoal">
-              The Architecture of <br />
+            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-light leading-tight text-charcoal">
+              The Architecture of <br className="hidden md:block" />
               <span className="text-gradient-gold">Fiduciary Excellence</span>
             </h2>
           </ScrollReveal>

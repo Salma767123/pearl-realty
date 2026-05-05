@@ -3,10 +3,10 @@ import DoodleLine from "@/components/DoodleLine";
 
 const FounderSection = () => {
   const timeline = [
-    { year: "10+ Years", label: "Sample Text" },
-    { year: "Global", label: "Sample Text" },
-    { year: "RERA", label: "Sample Text" },
-    { year: "DIFC", label: "Dubai Chamber of Commerce Member" },
+    { year: "10+ Years", label: "UHNWI Advisory Experience" },
+    { year: "Boutique", label: "Exclusive Client Network" },
+    { year: "3 Pillars", label: "Real Estate, Wealth, Legacy" },
+    { year: "18 Months", label: "Institutional Evolution" },
   ];
 
   return (
@@ -15,49 +15,43 @@ const FounderSection = () => {
 
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <span className="font-body text-xs tracking-[0.4em] uppercase text-[#222222] font-semibold dark:text-champagne/75 dark:font-normal">
+          <span className="font-body text-xs tracking-[0.4em] uppercase text-gold font-semibold dark:text-champagne/75 dark:font-normal">
             The Founder
           </span>
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
-          <h2 className="mt-8 font-display text-4xl md:text-6xl font-light leading-tight">
+          <h2 className="mt-8 font-display text-3xl md:text-6xl font-light leading-tight">
             The Person Behind{" "}
             <span className="text-gradient-gold">the Practice</span>
           </h2>
         </ScrollReveal>
 
-        <div className="mt-20 grid md:grid-cols-2 gap-16">
+        <div className="mt-12 md:mt-20 grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Left - Story */}
           <div>
             <ScrollReveal delay={400}>
               <p className="font-body text-lg text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
-                Investors and clients are not engaging Pearl Realty — they are engaging{" "}
-                <span className="text-[#111111] font-bold dark:text-foreground">Raghunath Nallamuthu</span>.
+                Pearl Realty is anchored by the trusted network of our founder, <span className="text-[#111111] font-bold dark:text-foreground">Raghunath Nallamuthu</span>. In elite real estate, these personal relationships are our most powerful asset.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={600}>
               <p className="mt-6 font-body text-base text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
-                A career-long UHNWI relationship specialist with over a decade of experience
-                across private wealth, luxury real estate advisory, and family office mandates.
-                Operating at the intersection of ultra-prime real estate, family wealth strategy,
-                and AI-augmented client service.
+                With expertise in ultra-luxury advisory and UHNWI portfolio management, our bespoke team delivers more than transactions—we deliver legacy.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={800}>
               <p className="mt-6 font-body text-base text-[#444444] font-medium dark:text-muted-foreground dark:font-normal leading-relaxed">
-                The firm operates on three non-negotiables: <span className="text-gradient-gold font-bold">exclusivity</span> — all engagements by invitation only;{" "}
-                <span className="text-gradient-gold font-bold">discretion</span> — no transaction is ever announced;{" "}
-                <span className="text-gradient-gold font-bold">precision</span> — a maximum of 35 active client mandates to preserve advisory quality.
+                <span className="text-gradient-gold font-bold">Our Evolution:</span> Over the next 18 months, Pearl Realty will transition into a premier institution through rigorous advisor standards and industry leadership.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={1000}>
               <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="mt-10 font-body text-xs tracking-[0.2em] uppercase text-[#111111] font-semibold hover:text-[#444444] dark:text-champagne/80 dark:font-normal dark:hover:text-champagne transition-colors duration-500 flex items-center gap-3"
+                className="mt-10 font-body text-xs tracking-[0.2em] uppercase text-gold font-semibold hover:text-[#444444] dark:text-champagne/80 dark:font-normal dark:hover:text-champagne transition-colors duration-500 flex items-center gap-3"
               >
                 <span className="w-8 h-px bg-[#111111] dark:bg-champagne/55" />
                 Work Directly With Me

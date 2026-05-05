@@ -8,6 +8,7 @@ import ManifestoSection from "@/components/sections/ManifestoSection";
 import FounderSection from "@/components/sections/FounderSection";
 import OpportunitySection from "@/components/sections/OpportunitySection";
 import ServicesSection from "@/components/sections/ServicesSection";
+import OffMarketSection from "@/components/sections/OffMarketSection";
 import ClientsSection from "@/components/sections/ClientsSection";
 import InsightsSection from "@/components/sections/InsightsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
@@ -73,6 +74,7 @@ const Index = () => {
 
       <OpportunitySection />
       <ServicesSection />
+      <OffMarketSection />
       <ClientsSection />
 
       <div className="relative h-32">
