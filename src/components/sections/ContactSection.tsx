@@ -15,7 +15,7 @@ const ContactSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] as any }
     }
   };
 
@@ -43,7 +43,7 @@ const ContactSection = () => {
                 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.9] text-[#111111] uppercase"
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] as any }}
               >
                 GAIN
               </motion.h2>
@@ -54,7 +54,7 @@ const ContactSection = () => {
                 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[0.9] uppercase bg-gradient-to-r from-[#C7A56A] via-[#9E7A43] to-[#C7A56A] bg-clip-text text-transparent group relative"
                 initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
-                transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, delay: 0.1, ease: [0.22, 1, 0.36, 1] as any }}
               >
                 PRIVATE ACCESS
                 {/* Gold Shimmer Sweep */}
