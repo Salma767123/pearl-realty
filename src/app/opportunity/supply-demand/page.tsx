@@ -37,7 +37,7 @@ const SupplyDemandCrunch = () => {
               <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-8 block font-semibold">Market Timing 03</span>
               <h1 className="font-display text-5xl md:text-8xl font-light leading-[1.1] mb-10 text-charcoal">
                 The Ultra-Prime <br />
-                <span className="text-gradient-gold italic">Crunch</span>
+                <span className="text-gradient-gold">Crunch</span>
               </h1>
             </ScrollReveal>
 
@@ -77,7 +77,7 @@ const SupplyDemandCrunch = () => {
         <div className="container mx-auto px-6">
            <div className="max-w-3xl mb-24">
               <ScrollReveal>
-                <h2 className="font-display text-4xl md:text-5xl font-light mb-10 leading-tight text-charcoal">Scarcity as a <br /><span className="italic text-gold">Strategic Force</span></h2>
+                <h2 className="font-display text-4xl md:text-5xl font-light mb-10 leading-tight text-charcoal">Scarcity as a <br /><span className="text-gold">Strategic Force</span></h2>
                 <p className="font-body text-charcoal/60 text-xl leading-relaxed font-light">
                    As Dubai secures its position as the #1 international acquisition destination, the market has matured beyond speculation. 
                    Today's acquisitions are driven by genuine utility and wealth repositioning, which is why supply in prime communities like Palm Jumeirah, 
@@ -153,7 +153,7 @@ const SupplyDemandCrunch = () => {
             
             <div className="relative z-10 max-w-3xl">
               <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold mb-8 block font-bold">Positioning Report</span>
-              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Secure the <br /><span className="italic text-gradient-gold">Limited Window</span></h2>
+              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Secure the <br /><span className="text-gradient-gold">Limited Window</span></h2>
               <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
                 <MagneticButton 
                   primary 

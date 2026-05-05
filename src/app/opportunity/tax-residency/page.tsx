@@ -36,7 +36,7 @@ const TaxResidencyAdvantage = () => {
               <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-8 block font-semibold">Market Timing 02</span>
               <h1 className="font-display text-5xl md:text-8xl font-light leading-[1.1] mb-10 text-charcoal">
                 Strategic <br />
-                <span className="text-gradient-gold italic">Advantage</span>
+                <span className="text-gradient-gold">Advantage</span>
               </h1>
             </ScrollReveal>
 
@@ -116,7 +116,7 @@ const TaxResidencyAdvantage = () => {
 
             <div className="relative z-10 max-w-3xl">
               <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold mb-8 block font-bold">Structural Setup</span>
-              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight italic text-gradient-gold text-charcoal">Your Legacy, Optimized</h2>
+              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-gradient-gold text-charcoal">Your Legacy, Optimized</h2>
               <p className="max-w-2xl mx-auto font-body text-charcoal/60 text-lg md:text-xl mb-12 font-light leading-relaxed">
                  Connect with our principals to discuss the strategic implications of relocation and private asset positioning before the current cycle peaks.
               </p>

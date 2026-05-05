@@ -37,7 +37,7 @@ const GlobalWealthMigration = () => {
               <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-8 block font-semibold">Market Timing 01</span>
               <h1 className="font-display text-5xl md:text-8xl font-light leading-[1.1] mb-10 text-charcoal">
                 Global Wealth <br />
-                <span className="text-gradient-gold italic">Migration</span>
+                <span className="text-gradient-gold">Migration</span>
               </h1>
             </ScrollReveal>
 
@@ -122,7 +122,7 @@ const GlobalWealthMigration = () => {
             
             <div className="relative z-10 max-w-3xl">
               <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold mb-8 block font-bold">Strategic Positioning</span>
-              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Your Next Move, <br /><span className="italic text-gradient-gold">Handled Privately</span></h2>
+              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Your Next Move, <br /><span className="text-gradient-gold">Handled Privately</span></h2>
               <p className="font-body text-charcoal/60 text-lg md:text-xl mb-12 font-light leading-relaxed">
                 Understand how the current global wealth shift directly impacts your portfolio strategy. Access off-market landmark opportunities.
               </p>

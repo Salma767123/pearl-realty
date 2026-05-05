@@ -36,7 +36,7 @@ const FamilyOfficeHub = () => {
               <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-8 block font-semibold">Market Timing 04</span>
               <h1 className="font-display text-5xl md:text-8xl font-light leading-[1.1] mb-10 text-charcoal">
                 Family Office <br />
-                <span className="text-gradient-gold italic">Governance</span>
+                <span className="text-gradient-gold">Governance</span>
               </h1>
             </ScrollReveal>
 
@@ -114,7 +114,7 @@ const FamilyOfficeHub = () => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(193,155,108,0.03)_0%,transparent_70%)]" />
 
             <div className="relative z-10 max-w-3xl">
-              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Establish <br /><span className="italic text-gradient-gold">Your Node</span></h2>
+              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Establish <br /><span className="text-gradient-gold">Your Node</span></h2>
               <p className="font-body text-charcoal/60 text-lg md:text-xl mb-12 font-light leading-relaxed">
                  Join the world's most sophisticated families in securing a permanent foothold in the world's new center of momentum.
               </p>
