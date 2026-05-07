@@ -1,52 +1,92 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import MagneticButton from "@/components/MagneticButton";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import Counter from "@/components/Counter";
+import DubaiDoodle from "@/components/opportunity/DubaiDoodle";
+import SplitCTA from "@/components/opportunity/SplitCTA";
 
 const SupplyDemandCrunch = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const doodleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const doodleOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <main className="bg-[#F8F7F4] text-[#1D1D1D] min-h-screen">
+    <main className="bg-[#F8F7F4] text-[#1D1D1D] min-h-screen overflow-x-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative pt-48 pb-24 overflow-hidden">
-        {/* Premium Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-6xl -z-10 opacity-30">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_70%_20%,rgba(193,155,108,0.05)_0%,transparent_60%)]" />
+      {/* ——— HERO SECTION ——— */}
+      <section ref={heroRef} className="relative pt-32 pb-16 overflow-hidden border-b border-charcoal/5">
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <motion.div
+            animate={{ opacity: [0.35, 0.7, 0.35], x: [-10, 10, -10] }}
+            transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[420px] bg-[radial-gradient(ellipse,rgba(199,165,106,0.08)_0%,transparent_70%)]"
+          />
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(29,29,29,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(29,29,29,0.8) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          <svg className="absolute bottom-0 left-0 w-full opacity-[0.06]" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <motion.path
+              d="M0 50 Q360 90 720 50 Q1080 10 1440 50 L1440 120 L0 120 Z"
+              fill="#C7A56A"
+              animate={{ d: [
+                "M0 50 Q360 90 720 50 Q1080 10 1440 50 L1440 120 L0 120 Z",
+                "M0 50 Q360 10 720 50 Q1080 90 1440 50 L1440 120 L0 120 Z",
+                "M0 50 Q360 90 720 50 Q1080 10 1440 50 L1440 120 L0 120 Z",
+              ]}}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </svg>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
           <ScrollReveal>
             <Link 
               href="/#opportunity" 
-              className="group inline-flex items-center gap-2 text-charcoal/40 hover:text-gold mb-12 text-xs tracking-[0.3em] uppercase transition-all duration-300"
+              className="group inline-flex items-center gap-2 text-charcoal/40 hover:text-gold mb-8 text-xs tracking-[0.3em] uppercase transition-all duration-300"
             >
               <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" /> 
-              Back to Opportunity
+              Back to Intelligence
             </Link>
           </ScrollReveal>
 
-          <div className="max-w-4xl">
-            <ScrollReveal delay={200}>
-              <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-8 block font-semibold">Market Timing 03</span>
-              <h1 className="font-display text-5xl md:text-8xl font-light leading-[1.1] mb-10 text-charcoal">
-                The Ultra-Prime <br />
-                <span className="text-gradient-gold">Crunch</span>
-              </h1>
-            </ScrollReveal>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[420px]">
+            <div>
+              <ScrollReveal delay={100}>
+                <span className="font-body text-xs tracking-[0.6em] uppercase text-gold mb-5 block font-semibold">Intelligence Report 03</span>
+              </ScrollReveal>
 
-            <ScrollReveal delay={400}>
-              <p className="font-body text-lg md:text-2xl text-charcoal/60 leading-relaxed font-light mb-12 max-w-3xl">
-                Dubai's high-conviction growth phase (2023–2026) is marked by a structural scarcity of landmark residential assets. 
-                Demand at the $10M+ entry point has surpassed supply by a critical margin.
-              </p>
-            </ScrollReveal>
+              <ScrollReveal delay={200}>
+                <h1 className="font-display text-5xl md:text-7xl font-light leading-[1.05] mb-6 text-charcoal">
+                  The Ultra-Prime <br />
+                  <span className="text-gradient-gold">Crunch</span>
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={350}>
+                <p className="font-body text-base md:text-lg text-charcoal/55 leading-relaxed font-light mb-10 max-w-lg">
+                  Dubai's high-conviction growth phase (2023–2026) is marked by a structural scarcity of landmark residential assets. 
+                  Demand at the $10M+ entry point has surpassed supply by a critical margin.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            <motion.div style={{ y: doodleY, opacity: doodleOpacity }} className="hidden lg:block relative h-[420px]">
+              <DubaiDoodle />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -56,13 +96,15 @@ const SupplyDemandCrunch = () => {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 md:gap-16">
             {[
-              { label: "Ultra-Prime Growth", value: "+43%", description: "Year-on-year increase in $5M+ transactions." },
-              { label: "Landmark Transactions", value: "1,247", description: "Number of $10M+ deals closed in 2023." },
-              { label: "Buyer Intent", value: "68%", description: "UHNWIs planning more purchases within 2 years." }
+              { label: "Ultra-Prime Growth", value: 43, prefix: "+", suffix: "%", description: "Year-on-year increase in $5M+ transactions." },
+              { label: "Landmark Transactions", value: 1247, prefix: "", suffix: "", description: "Number of $10M+ deals closed in 2023." },
+              { label: "Buyer Intent", value: 68, prefix: "", suffix: "%", description: "UHNWIs planning more purchases within 2 years." }
             ].map((metric, i) => (
               <ScrollReveal key={i} delay={200 + i * 100}>
                 <div className="flex flex-col p-8 rounded-2xl bg-white border border-charcoal/5 shadow-sm hover:shadow-md hover:border-gold/20 transition-all duration-500 h-full">
-                  <span className="text-5xl md:text-7xl font-display text-gradient-gold mb-6 tabular-nums">{metric.value}</span>
+                  <span className="text-5xl md:text-7xl font-display text-gradient-gold mb-6 tabular-nums">
+                    <Counter value={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
+                  </span>
                   <span className="text-[10px] tracking-[0.2em] uppercase text-gold mb-4 font-bold">{metric.label}</span>
                   <p className="text-sm text-charcoal/50 font-light leading-relaxed">{metric.description}</p>
                 </div>
@@ -144,35 +186,14 @@ const SupplyDemandCrunch = () => {
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-40 container mx-auto px-6">
-        <ScrollReveal>
-          <div className="relative overflow-hidden rounded-[3rem] bg-white border border-gold/20 p-12 md:p-24 text-center shadow-xl flex flex-col items-center gap-10">
-            {/* Background shimmer effect removed for cleaner light theme or moved to CSS */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(193,155,108,0.03)_0%,transparent_70%)]" />
-            
-            <div className="relative z-10 max-w-3xl">
-              <span className="font-body text-[10px] tracking-[0.6em] uppercase text-gold mb-8 block font-bold">Positioning Report</span>
-              <h2 className="font-display text-4xl md:text-6xl font-light mb-10 leading-tight text-charcoal">Secure the <br /><span className="text-gradient-gold">Limited Window</span></h2>
-              <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-12">
-                <MagneticButton 
-                  primary 
-                  className="rounded-full px-12 py-5"
-                  onClick={() => window.location.href = "/#contact"}
-                >
-                  Position Portfolio
-                </MagneticButton>
-                <MagneticButton 
-                  className="rounded-full px-12 py-5"
-                  onClick={() => window.location.href = "/#contact"}
-                >
-                  Asset Analysis
-                </MagneticButton>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
+      {/* CTA */}
+      <div className="container mx-auto">
+        <SplitCTA
+          label="Positioning Report"
+          headline={"Secure the\nLimited Window"}
+          subtext="The window for landmark asset acquisition in prime corridors is narrowing. Act with precision."
+        />
+      </div>
 
       <FooterSection />
     </main>

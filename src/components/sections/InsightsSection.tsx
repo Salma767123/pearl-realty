@@ -94,8 +94,6 @@ const InsightsSection = () => {
           {insights.map((item, i) => (
             <ScrollReveal key={i} delay={400 + i * 100}>
               <div className="relative group p-8 rounded-2xl bg-white/70 dark:bg-card/40 backdrop-blur-sm border border-black/[0.08] dark:border-white/5 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.06)] border-l-4 border-l-champagne/60 hover:border-l-champagne hover:shadow-[0_8px_40px_-8px_rgba(0,0,0,0.12)] transition-all duration-700">
-                <div className="absolute top-4 right-4 text-[10px] font-display text-champagne/55">NODE_{i + 1}</div>
-
                 <AnimatedNumber value={item.value} suffix={item.suffix} prefix={item.prefix} />
 
                 <p className="mt-4 font-body text-xs text-charcoal dark:text-foreground font-semibold tracking-[0.2em] uppercase">

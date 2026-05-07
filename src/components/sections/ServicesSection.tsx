@@ -100,7 +100,7 @@ const ServiceCard = ({ pillar, index }: { pillar: typeof pillars[0]; index: numb
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 overflow-hidden bg-pearl">
+    <section id="services" className="relative py-24 overflow-hidden bg-pearl scroll-mt-32">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-champagne/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-beige/80 rounded-full blur-[150px] pointer-events-none" />
