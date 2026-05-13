@@ -13,6 +13,12 @@ const ContactForm = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const [focused, setFocused] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,6 +45,41 @@ const ContactForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const { sendEmail } = await import("@/app/actions/email");
+      const result = await sendEmail(formState);
+
+      if (result.success) {
+        setSubmitStatus({
+          type: "success",
+          message: "Enquiry sent successfully. Our specialists will contact you shortly.",
+        });
+        setFormState({ name: "", email: "", subject: "", message: "" });
+        // Clear status after 5 seconds
+        setTimeout(() => setSubmitStatus({ type: null, message: "" }), 5000);
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: result.error || "Failed to send enquiry. Please try again.",
+        });
+        setTimeout(() => setSubmitStatus({ type: null, message: "" }), 5000);
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An unexpected error occurred. Please try again.",
+      });
+      setTimeout(() => setSubmitStatus({ type: null, message: "" }), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClasses = "w-full bg-transparent border-none outline-none py-3 font-body text-[#111111] placeholder:text-[#111111]/30 transition-all duration-300";
@@ -108,7 +149,7 @@ const ContactForm = () => {
             </p>
           </div>
 
-          <form className="space-y-5 pt-2">
+          <form onSubmit={handleSubmit} className="space-y-5 pt-2">
             {[
               { id: "name", label: "Name *" },
               { id: "email", label: "Email *", type: "email" },
@@ -119,6 +160,7 @@ const ContactForm = () => {
                   type={field.type || "text"}
                   name={field.id}
                   autoComplete="off"
+                  required
                   value={formState[field.id as keyof typeof formState]}
                   onChange={handleChange}
                   onFocus={() => setFocused(field.id)}
@@ -142,6 +184,7 @@ const ContactForm = () => {
               <textarea
                 name="message"
                 rows={2}
+                required
                 value={formState.message}
                 onChange={handleChange}
                 onFocus={() => setFocused('message')}
@@ -160,10 +203,28 @@ const ContactForm = () => {
               </div>
             </div>
 
+            {submitStatus.type && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                className={`text-[11px] font-body tracking-wider uppercase p-3 rounded border ${
+                  submitStatus.type === "success" 
+                    ? "bg-green-500/10 border-green-500/20 text-green-600" 
+                    : "bg-red-500/10 border-red-500/20 text-red-600"
+                }`}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
+
             <div className="pt-4 pb-4 flex justify-center md:justify-center">
-              <MagneticButton className="relative group overflow-hidden bg-[#C7A56A] py-4 px-12 rounded-full border border-[#C7A56A]/20 transition-all duration-700">
+              <MagneticButton 
+                type="submit"
+                disabled={isSubmitting}
+                className="relative group overflow-hidden bg-[#111111] py-4 px-12 rounded-full border border-[#C7A56A]/20 transition-all duration-700"
+              >
                 <span className="relative z-10 text-[10px] tracking-[0.3em] font-bold text-[#C7A56A]">
-                  SEND REQUEST
+                  {isSubmitting ? "TRANSMITTING..." : "SEND REQUEST"}
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-[#C7A56A]/10"

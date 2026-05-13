@@ -14,16 +14,16 @@ const contactDetails = [
   {
     id: "phone",
     label: "PHONE",
-    value: "+971 XX XXX XXXX",
+    value: "+971 52 493 3408",
     icon: Phone,
-    href: "tel:+971XXXXXXXXX",
+    href: "tel:+971524933408",
   },
   {
     id: "whatsapp",
     label: "WHATSAPP",
     value: "Priority Direct Chat",
     icon: MessageSquare,
-    href: "https://wa.me/971XXXXXXXXX",
+    href: "https://wa.me/971524933408",
   },
   {
     id: "location",
