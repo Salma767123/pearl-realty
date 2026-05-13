@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const segments = [
@@ -23,6 +26,59 @@ const segments = [
   },
 ];
 
+const ClientSegment = ({ seg, i }: { seg: typeof segments[0], i: number }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div 
+      className="group py-10 border-b border-border/35 hover:border-champagne/30 transition-colors duration-700 cursor-pointer md:cursor-default"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className="flex items-start justify-between gap-4 sm:gap-8">
+        <div className="flex-1">
+          <div className="flex items-center gap-4">
+            <span className="font-body text-xs text-champagne/70 tracking-wider font-semibold">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 className="font-display text-lg md:text-2xl text-foreground group-hover:text-champagne transition-colors duration-500">
+              {seg.title}
+            </h3>
+          </div>
+          <p className="mt-2 ml-4 md:ml-10 font-body text-[10px] tracking-wider text-muted-foreground/80 uppercase font-medium">
+            {seg.detail}
+          </p>
+        </div>
+        
+        {/* Mobile Arrow - Only visible on small screens */}
+        <div className="md:hidden mt-1">
+          <svg 
+            width="18" 
+            height="18" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className={`text-gold transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+      <p 
+        className={`mt-4 ml-4 md:ml-10 font-body text-sm text-muted-foreground leading-relaxed max-w-xl transition-all duration-700 overflow-hidden ${
+          isOpen 
+            ? "opacity-100 max-h-40" 
+            : "opacity-0 max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-40"
+        }`}
+      >
+        {seg.need}
+      </p>
+    </div>
+  );
+};
+
 const ClientsSection = () => {
   return (
     <section id="clients" className="relative pt-14 pb-2 overflow-hidden bg-background font-body">
@@ -37,41 +93,14 @@ const ClientsSection = () => {
 
         <ScrollReveal delay={200}>
           <h2 className="mt-8 font-display text-3xl sm:text-4xl md:text-6xl font-light leading-tight text-foreground text-center">
-            Who We{" "}
-            <span className="text-gradient-gold">Serve</span>
+            Who We <span className="text-gradient-gold">Serve</span>
           </h2>
         </ScrollReveal>
 
         <div className="mt-12 md:mt-20 space-y-0">
           {segments.map((seg, i) => (
             <ScrollReveal key={i} delay={400 + i * 150}>
-              <div className="group py-10 border-b border-border/35 hover:border-champagne/30 transition-colors duration-700">
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 sm:gap-8">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4">
-                      <span className="font-body text-xs text-champagne/70 tracking-wider font-semibold">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-display text-lg md:text-2xl text-foreground group-hover:text-champagne transition-colors duration-500">
-                        {seg.title}
-                      </h3>
-                    </div>
-                    <p className="mt-2 ml-4 md:ml-10 font-body text-[10px] tracking-wider text-muted-foreground/80 uppercase font-medium">
-                      {seg.detail}
-                    </p>
-                  </div>
-                  <svg
-                    className="hidden sm:block w-5 h-5 text-champagne/45 group-hover:text-champagne/80 transition-all duration-500 group-hover:translate-x-1 mt-2 flex-shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path d="M5,10 L15,10 M10,5 L15,10 L10,15" stroke="currentColor" strokeWidth="1.5" />
-                  </svg>
-                </div>
-                <p className="mt-4 ml-4 md:ml-10 font-body text-sm text-muted-foreground leading-relaxed max-w-xl opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-40 transition-all duration-700 overflow-hidden">
-                  {seg.need}
-                </p>
-              </div>
+              <ClientSegment seg={seg} i={i} />
             </ScrollReveal>
           ))}
         </div>

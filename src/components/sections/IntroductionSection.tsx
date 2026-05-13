@@ -5,41 +5,9 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue } from "fram
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "@/components/ScrollReveal";
+import MagneticButton from "@/components/MagneticButton";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// --- Sub-Component: Magnetic Button ---
-const MagneticButton = ({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLButtonElement>(null);
-
-  const handleMouse = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current?.getBoundingClientRect() || { height: 0, width: 0, left: 0, top: 0 };
-    const x = clientX - (left + width / 2);
-    const y = clientY - (top + height / 2);
-    setPosition({ x: x * 0.35, y: y * 0.35 });
-  };
-
-  const reset = () => {
-    setPosition({ x: 0, y: 0 });
-  };
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className={`relative group px-10 py-5 rounded-full font-body text-xs tracking-[0.4em] uppercase overflow-hidden border border-champagne/30 text-background bg-champagne hover:bg-transparent hover:text-champagne transition-colors duration-500 ${className}`}
-      onClick={onClick}
-    >
-      <span className="relative z-10">{children}</span>
-      <div className="absolute inset-0 bg-background translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-    </motion.button>
-  );
-};
 
 // --- Sub-Component: Counter ---
 const DynamicCounter = ({ value, prefix = "", suffix = "", delay = 0 }: { value: number; prefix?: string; suffix?: string; delay?: number }) => {
@@ -237,11 +205,11 @@ const IntroductionSection = () => {
               className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.09] dark:border-white/5 shadow-sm backdrop-blur-sm group"
             >
               <div className="text-4xl lg:text-5xl font-display text-champagne mb-4">
-                <DynamicCounter value={4.2} prefix="$" suffix="T" />
+                <DynamicCounter value={4.5} prefix="$" suffix="T" />
               </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/80 leading-relaxed">
                 UHNWI Capital Migration <br />
-                <span className="text-champagne/90">BCG Global Wealth Report 2025</span>
+                <span className="text-champagne/90">BCG Global Wealth Report 2026</span>
               </p>
               {/* Animated growth line */}
               <motion.div
@@ -276,10 +244,10 @@ const IntroductionSection = () => {
               className="relative p-8 rounded-2xl bg-white/60 dark:bg-white/5 border border-black/[0.09] dark:border-white/5 shadow-sm backdrop-blur-sm group"
             >
               <div className="text-4xl lg:text-5xl font-display text-champagne mb-4">
-                <DynamicCounter value={528} prefix="AED " suffix="B" />
+                <DynamicCounter value={700} prefix="AED " suffix="B" />
               </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-charcoal/70 leading-relaxed">
-                Transaction Volume (2023) <br />
+                Transaction Volume (2026) <br />
                 <span className="text-champagne/90">Dubai Land Department</span>
               </p>
               <motion.div
@@ -317,7 +285,7 @@ const IntroductionSection = () => {
 
         <div className="mt-10 flex justify-center">
           <ScrollReveal delay={600}>
-            <MagneticButton className="mx-auto" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+            <MagneticButton primary className="mx-auto rounded-full" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
               Discover the Opportunity
             </MagneticButton>
           </ScrollReveal>

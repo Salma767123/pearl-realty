@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Suspense } from "react";
 import Lenis from "@studio-freight/lenis";
 import HeroSection from "@/components/sections/HeroSection";
 import IntroductionSection from "@/components/sections/IntroductionSection";
@@ -20,10 +20,21 @@ import Navbar from "@/components/Navbar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-const Index = () => {
+import { useSearchParams } from "next/navigation";
+
+const HomePageContent = () => {
   const lenisRef = useRef<Lenis | null>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    // Disable browser automatic scroll restoration
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    
+    // Ensure we start at top on initial load/redirect
+    window.scrollTo(0, 0);
+
     // Only register on client
     gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +53,31 @@ const Index = () => {
 
     requestAnimationFrame(raf);
 
+    // Handle initial scroll from query param
+    const handleInitialScroll = () => {
+      const scrollToId = searchParams.get("scrollTo");
+      if (scrollToId) {
+        const element = document.getElementById(scrollToId);
+        if (element) {
+          // Wait for page to stabilize and GSAP to refresh
+          setTimeout(() => {
+            lenis.scrollTo(element, { 
+              duration: 2,
+              offset: -100 // Adjust for fixed header
+            });
+            
+            // Clean up the URL query param without adding to history
+            const url = new URL(window.location.href);
+            url.searchParams.delete("scrollTo");
+            window.history.replaceState({}, "", url.pathname + url.hash);
+          }, 600);
+        }
+      }
+    };
+
+    // Run on mount
+    handleInitialScroll();
+
     // Refresh GSAP after a short delay to ensure all DOM elements are sized correctly
     const refreshTimeout = setTimeout(() => {
       ScrollTrigger.refresh();
@@ -51,7 +87,7 @@ const Index = () => {
       lenis.destroy();
       clearTimeout(refreshTimeout);
     };
-  }, []);
+  }, [searchParams]);
 
   return (
     <main className="bg-background text-foreground overflow-hidden">
@@ -90,4 +126,10 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default function Index() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePageContent />
+    </Suspense>
+  );
+}

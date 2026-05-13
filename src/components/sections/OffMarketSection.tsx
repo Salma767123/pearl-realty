@@ -8,61 +8,49 @@ import { CheckCircle2 } from "lucide-react";
 
 // --- Data Models ---
 
-const tiers = [
-  {
-    id: "01",
-    name: "Pearl Access",
-    subtitle: "Discrete acquisition for single ultra-prime assets.",
-    features: [
-      "Off-market sourcing",
-      "Asset presentation",
-      "Negotiation support",
-      "Transaction management",
-      "VR property viewing",
-      "Legal handoff",
-      "Golden Visa assistance",
-    ],
-    pricing: "1.75% – 2.0%",
-    dealSize: "$10M – $25M",
-    relationship: "90-day post completion concierge",
-    featured: false,
-  },
-  {
-    id: "02",
-    name: "Pearl Advisory",
-    subtitle: "For repeat investors and family offices.",
-    features: [
-      "Everything in Pearl Access",
-      "Quarterly reviews",
-      "Market intelligence briefings",
-      "Priority deal pipeline",
-      "Succession introductions",
-      "Hospitality yield optimization",
-    ],
-    pricing: "1.75% + $50K annual retainer",
-    minTerm: "12 months",
-    relationship: "Long-term advisory",
-    featured: true,
-  },
-  {
-    id: "03",
-    name: "Pearl Legacy",
-    subtitle: "For dynastic wealth holders and legacy families.",
-    features: [
-      "Everything in Pearl Advisory",
-      "Estate structuring",
-      "Multi-generational planning",
-      "Family council advisory",
-      "Heir advisory strategy",
-      "Annual legacy review",
-    ],
-    pricing: "1.5% + $150K annual retainer",
-    target: "Family offices / Royal families / Founders post-exit",
-    featured: false,
-  },
-];
-
-
+const advisoryTier = {
+  id: "01",
+  name: "Pearl Advisory",
+  subtitle: "A comprehensive fiduciary mandate for high-conviction portfolios and dynastic wealth preservation.",
+  featureGroups: [
+    {
+      title: "Acquisition & Execution",
+      items: [
+        "Off-market asset sourcing",
+        "Strategic asset presentation",
+        "Negotiation & deal structuring",
+        "Transaction management",
+        "VR property visualization",
+        "Legal & jurisdictional handoff",
+      ]
+    },
+    {
+      title: "Portfolio Intelligence",
+      items: [
+        "Market intelligence briefings",
+        "Quarterly performance reviews",
+        "Hospitality yield optimization",
+        "Priority deal pipeline access",
+        "Golden Visa orchestration",
+        "Institutional network access",
+      ]
+    },
+    {
+      title: "Legacy & Governance",
+      items: [
+        "Estate & succession structuring",
+        "Multi-generational planning",
+        "Family council advisory",
+        "Heir advisory strategy",
+        "Annual legacy audit",
+      ]
+    }
+  ],
+  pricing: "1.5% – 2.0% + $50k Annual",
+  dealSize: "12 months",
+  relationship: "Long-term advisory",
+  target: "Family Offices / Royal Families / Post-Exit Founders",
+};
 
 export default function OffMarketSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -72,6 +60,22 @@ export default function OffMarketSection() {
   });
 
   const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+
+  // Variants for staggered checklist animation
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <section
@@ -86,6 +90,7 @@ export default function OffMarketSection() {
       >
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#C7A56A] blur-[150px] rounded-full opacity-10 mix-blend-screen" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-white blur-[120px] rounded-full opacity-5 mix-blend-screen" />
+
         {/* Abstract Blueprint Lines */}
         <svg className="absolute w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -101,7 +106,7 @@ export default function OffMarketSection() {
         {/* Header */}
         <div className="text-center mb-24">
           <ScrollReveal>
-            <span className="font-body text-xs tracking-[0.4em] uppercase text-[#C7A56A] font-semibold flex items-center justify-center gap-4">
+            <span className="font-body text-xs tracking-[0.4em] uppercase text-gold font-semibold flex items-center justify-center gap-4">
               <span className="w-12 h-px bg-[#C7A56A]/50"></span>
               Exclusive Access
               <span className="w-12 h-px bg-[#C7A56A]/50"></span>
@@ -111,7 +116,7 @@ export default function OffMarketSection() {
           <ScrollReveal delay={200}>
             <h2 className="mt-8 font-display text-5xl md:text-7xl font-light leading-tight">
               Off Market.<br />
-              <span className="text-[#C7A56A]">By Invitation Only.</span>
+              <span className="text-gold">By Invitation Only.</span>
             </h2>
           </ScrollReveal>
 
@@ -122,85 +127,87 @@ export default function OffMarketSection() {
           </ScrollReveal>
         </div>
 
-        {/* Private Service Architecture Tiers */}
-        <div className="space-y-8 mb-32">
-          {tiers.map((tier, index) => (
-            <ScrollReveal key={tier.id} delay={200 + index * 100}>
-              <div
-                className={`group relative p-[1px] rounded-2xl overflow-hidden transition-all duration-700 ${tier.featured ? "bg-gradient-to-r from-[#C7A56A]/40 via-[#C7A56A]/10 to-[#C7A56A]/40" : "bg-white/5 hover:bg-white/10"
-                  }`}
-              >
-                <div className={`relative bg-[#0a0a0a] rounded-2xl p-8 md:p-12 h-full ${tier.featured ? "bg-gradient-to-r from-[#111] to-[#1a1a1a]" : ""}`}>
+        {/* Unified Private Service Card */}
+        <ScrollReveal delay={500}>
+          <div className="group relative p-[1px] rounded-3xl overflow-hidden bg-gradient-to-r from-[#C7A56A]/40 via-[#C7A56A]/10 to-[#C7A56A]/40 shadow-2xl transition-all duration-700">
+            <div className="relative bg-[#0a0a0a] rounded-3xl p-8 md:p-16 bg-gradient-to-br from-[#0d0d0d] to-[#141414]">
+              <div className="flex flex-col lg:flex-row gap-16 lg:gap-20">
 
-                  {/* {tier.featured && (
-                    <div className="absolute top-0 right-8 transform -translate-y-1/2">
-                      <span className="bg-[#C7A56A] text-[#0a0a0a] text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full">
-                        Featured Engagement
-                      </span>
+                {/* Left: Identity & Core Details */}
+                <div className="lg:w-1/3 space-y-10">
+                  <div>
+                    <span className="text-[#C7A56A]/60 font-mono text-sm tracking-widest uppercase">Mandate 01</span>
+                    <h3 className="font-display text-4xl md:text-5xl text-white mt-4 mb-6">{advisoryTier.name}</h3>
+                    <p className="text-white/50 text-base md:text-lg leading-relaxed font-light">{advisoryTier.subtitle}</p>
+                  </div>
+
+                  <div className="pt-10 border-t border-white/5 space-y-8">
+                    <div>
+                      <span className="block text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2 font-bold">Fee Structure</span>
+                      <span className="font-display text-2xl text-white">{advisoryTier.pricing}</span>
                     </div>
-                  )} */}
-
-                  <div className="grid md:grid-cols-12 gap-8 items-center">
-                    {/* Left: Identity */}
-                    <div className="md:col-span-3">
-                      <span className="text-[#C7A56A]/50 text-sm font-mono">{tier.id}</span>
-                      <h3 className="font-display text-2xl md:text-3xl text-white mt-2 mb-2">{tier.name}</h3>
-                      <p className="text-white/50 text-sm leading-relaxed pr-4">{tier.subtitle}</p>
+                    <div>
+                      <span className="block text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2 font-bold">Target Profile</span>
+                      <span className="text-white/80 text-sm tracking-wide font-medium">{advisoryTier.target}</span>
                     </div>
-
-                    {/* Center: Features */}
-                    <div className="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 border-y md:border-y-0 md:border-l border-white/10 py-6 md:py-0 md:pl-8">
-                      {tier.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-4 h-4 text-[#C7A56A] mt-1 shrink-0" />
-                          <span className="text-white/70 text-sm">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Right: Metrics */}
-                    <div className="md:col-span-3 md:border-l border-white/10 md:pl-8 space-y-4">
+                    <div className="flex flex-wrap gap-x-12 gap-y-6">
                       <div>
-                        <span className="block text-[10px] uppercase tracking-wider text-white/40 mb-1">Fee Structure</span>
-                        <span className="font-display text-lg text-white">{tier.pricing}</span>
+                        <span className="block text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2 font-bold">Minimum Term</span>
+                        <span className="text-white/80 text-sm font-medium">{advisoryTier.dealSize}</span>
                       </div>
-                      {tier.dealSize && (
-                        <div>
-                          <span className="block text-[10px] uppercase tracking-wider text-white/40 mb-1">Typical Deal</span>
-                          <span className="text-sm text-white/80">{tier.dealSize}</span>
-                        </div>
-                      )}
-                      {tier.minTerm && (
-                        <div>
-                          <span className="block text-[10px] uppercase tracking-wider text-white/40 mb-1">Minimum Term</span>
-                          <span className="text-sm text-white/80">{tier.minTerm}</span>
-                        </div>
-                      )}
-                      {tier.target && (
-                        <div>
-                          <span className="block text-[10px] uppercase tracking-wider text-white/40 mb-1">Target Profile</span>
-                          <span className="text-sm text-white/80">{tier.target}</span>
-                        </div>
-                      )}
                       <div>
-                        <span className="block text-[10px] uppercase tracking-wider text-white/40 mb-1">Relationship</span>
-                        <span className="text-sm text-[#C7A56A]">{tier.relationship}</span>
+                        <span className="block text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2 font-bold">Relationship</span>
+                        <span className="text-gold text-sm font-bold tracking-wide">{advisoryTier.relationship}</span>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Right: Feature Ecosystem (3 Columns) */}
+                <div className="lg:w-2/3">
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-16">
+                    {advisoryTier.featureGroups.map((group, groupIdx) => (
+                      <div key={groupIdx} className="space-y-8">
+                        <h4 className="font-display text-xs uppercase tracking-[0.4em] text-gold font-bold pb-4 border-b border-white/5">
+                          {group.title}
+                        </h4>
+                        <motion.ul
+                          variants={listVariants}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
+                          className="space-y-5"
+                        >
+                          {group.items.map((item, itemIdx) => (
+                            <motion.li
+                              key={itemIdx}
+                              variants={itemVariants}
+                              className="flex items-start gap-4 group/item"
+                            >
+                              <div className="mt-1">
+                                <CheckCircle2 className="w-4 h-4 text-[#C7A56A] group-hover/item:scale-110 transition-transform duration-300" />
+                              </div>
+                              <span className="text-white/60 text-sm leading-relaxed font-light group-hover/item:text-white transition-colors duration-300">
+                                {item}
+                              </span>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* CTA Strip */}
         <ScrollReveal>
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-6">
-            <MagneticButton 
-              primary 
+          <div className="relative z-10 mt-20 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <MagneticButton
+              primary
               className="rounded-full px-12"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >

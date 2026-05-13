@@ -5,15 +5,15 @@ import businessmanImg from "@/assets/businessman.png";
 const philosophyPoints = [
   {
     label: "Philosophy",
-    title: "We don't list properties. We curate legacies.",
+    title: "We don’t list properties. We curate legacy-grade assets.",
     description:
-      "Every recommendation is evaluated across a 30-year time horizon — not a 30-day one.",
+      "Every recommendation is evaluated through the lens of jurisdictional security, tax efficiency, capital preservation, and generational wealth continuity.",
   },
   {
     label: "Strategy",
     title: "Precision over volume. Always.",
     description:
-      "A maximum of 35 active mandates ensures every client receives undivided strategic counsel.",
+      "Our low-volume, high-touch advisory model ensures every client receives undivided strategic counsel, bespoke asset curation, and absolute confidentiality throughout the engagement.",
   },
   {
     label: "Wealth",
@@ -212,7 +212,7 @@ const PhilosophyPoint = ({
   return (
     <div
       ref={ref}
-      className="relative pl-6 md:pl-14 transition-all duration-700"
+      className="relative pl-10 md:pl-14 transition-all duration-700"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",

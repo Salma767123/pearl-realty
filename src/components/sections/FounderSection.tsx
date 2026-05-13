@@ -10,7 +10,7 @@ const FounderSection = () => {
   ];
 
   return (
-    <section id="founder" className="relative bg-pearl pt-12 pb-12 overflow-hidden">
+    <section id="founder" className="relative bg-pearl pt-12 pb-12 overflow-hidden scroll-mt-32">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-ivory to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -51,9 +51,9 @@ const FounderSection = () => {
             <ScrollReveal delay={1000}>
               <button
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="mt-10 font-body text-xs tracking-[0.2em] uppercase text-gold font-semibold hover:text-[#444444] dark:text-champagne/80 dark:font-normal dark:hover:text-champagne transition-colors duration-500 flex items-center gap-3"
+                className="group mt-10 font-body text-xs tracking-[0.25em] uppercase text-gold font-semibold dark:text-champagne/80 dark:font-normal dark:hover:text-champagne transition-colors duration-500 flex items-center gap-4"
               >
-                <span className="w-8 h-px bg-[#111111] dark:bg-champagne/55" />
+                <span className="w-8 h-[1.5px] bg-[#111111] dark:bg-champagne/55 group-hover:w-12 transition-all duration-500" />
                 Work Directly With Me
               </button>
             </ScrollReveal>

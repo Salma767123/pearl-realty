@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
 import lightLogo from "@/assets/light_logo.png";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "Advisory", id: "founder" },
@@ -64,11 +65,11 @@ const Navbar = () => {
             className="flex items-center"
           >
             <Image
-              src={mounted ? lightLogo : logo}
+              src={scrolled ? lightLogo : logo}
               alt="Pearl Legacy"
               width={140}
               height={45}
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain transition-all duration-500"
             />
           </button>
 
@@ -193,7 +194,7 @@ const Navbar = () => {
           <p className="font-body text-[9px] tracking-[0.4em] uppercase text-muted-foreground/40 mb-3">Follow</p>
           <div className="flex items-center gap-3">
             {/* LinkedIn */}
-            <a href="#" aria-label="LinkedIn" className="w-9 h-9 flex items-center justify-center rounded-full bg-champagne/10 text-champagne hover:bg-champagne hover:text-background transition-all duration-300">
+            <a href="https://www.linkedin.com/in/raghunath-nallamuthu-pearl-realty?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" aria-label="LinkedIn" className="w-9 h-9 flex items-center justify-center rounded-full bg-champagne/10 text-champagne hover:bg-champagne hover:text-background transition-all duration-300">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
@@ -201,13 +202,13 @@ const Navbar = () => {
               </svg>
             </a>
             {/* Instagram */}
-            <a href="#" aria-label="Instagram" className="w-9 h-9 flex items-center justify-center rounded-full bg-champagne/10 text-champagne hover:bg-champagne hover:text-background transition-all duration-300">
+            {/* <a href="#" aria-label="Instagram" className="w-9 h-9 flex items-center justify-center rounded-full bg-champagne/10 text-champagne hover:bg-champagne hover:text-background transition-all duration-300">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
-            </a>
+            </a> */}
             {/* WhatsApp */}
             <a href="#" aria-label="WhatsApp" className="w-9 h-9 flex items-center justify-center rounded-full bg-champagne/10 text-champagne hover:bg-champagne hover:text-background transition-all duration-300">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -225,8 +226,9 @@ const Navbar = () => {
           >
             Request Private Consultation
           </button>
-          <p className="mt-3 font-body text-[9px] tracking-wider text-center text-muted-foreground/30">
-            © 2026 Pearl Realty · Strictly Private
+          <p className="mt-4 font-body text-[9px] tracking-[0.2em] text-center text-muted-foreground/30 leading-relaxed uppercase">
+            © 2026 Pearl Realty. All Rights Reserved <br />
+            Crafted by <Link href="https://www.mntfuture.com" target="_blank" rel="noopener noreferrer" className="hover:text-champagne transition-colors duration-300">MnT</Link>
           </p>
         </div>
       </aside>
@@ -243,13 +245,13 @@ const HamburgerButton = ({ open, onClick }: { open: boolean; onClick: () => void
       className="w-11 h-11 flex flex-col justify-center items-center gap-[6px] group transition-all duration-300"
     >
       <span
-        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:-rotate-3 ${open ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-gold group-hover:bg-[#C7A56A] group-hover:-rotate-3 ${open ? "rotate-45 translate-y-[8px] group-hover:rotate-45" : ""}`}
       />
       <span
-        className={`block transition-all duration-400 h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] ${open ? "w-0 opacity-0" : "w-4"}`}
+        className={`block transition-all duration-400 h-[2.5px] bg-gold group-hover:bg-[#C7A56A] ${open ? "w-0 opacity-0" : "w-4"}`}
       />
       <span
-        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-[#111111] group-hover:bg-[#C7A56A] group-hover:rotate-3 ${open ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : ""}`}
+        className={`block w-6 transition-all duration-400 origin-center h-[2.5px] bg-gold group-hover:bg-[#C7A56A] group-hover:rotate-3 ${open ? "-rotate-45 -translate-y-[8.5px] group-hover:-rotate-45" : ""}`}
       />
     </button>
   );

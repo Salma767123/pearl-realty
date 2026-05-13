@@ -111,10 +111,10 @@ const CTASection = () => {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-5xl mx-auto px-6 relative z-30 flex flex-col items-center text-center">
 
           {/* Center Content */}
-          <motion.div style={{ y: textY }} className="flex flex-col items-center mb-0">
+          <motion.div style={{ y: textY }} className="flex flex-col items-center mb-0 relative z-40">
             <ScrollReveal>
               <span className="font-body text-xs tracking-[0.6em] uppercase text-champagne/60 inline-block mb-10">
                 The Circle of Discretion
@@ -135,7 +135,7 @@ const CTASection = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={600}>
-              <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8">
+              <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-8 relative z-50">
                 <MagneticButton className="rounded-full w-full sm:w-auto" primary onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>Book Private Consultation</MagneticButton>
                 <MagneticButton className="rounded-full w-full sm:w-auto" onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}>Explore Pillars</MagneticButton>
               </div>
@@ -145,7 +145,7 @@ const CTASection = () => {
           {/* Hero: The Interactive Phone (Centered Bottom) */}
           <motion.div
             style={{ y: phoneY }}
-            className="relative w-full flex justify-center items-start -mt-10 md:-mt-20 -mb-20 md:-mb-40"
+            className="relative w-full flex justify-center items-start -mt-10 md:-mt-20 -mb-20 md:-mb-40 pointer-events-none"
           >
             <motion.div
               className="relative w-[280px] h-[560px] md:w-[480px] md:h-[960px]"

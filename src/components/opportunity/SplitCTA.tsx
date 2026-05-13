@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import MagneticButton from "@/components/MagneticButton";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 interface SplitCTAProps {
   label?: string;
@@ -11,6 +12,7 @@ interface SplitCTAProps {
   subtext?: string;
   primaryLabel?: string;
   secondaryLabel?: string;
+  theme?: "dark" | "light";
 }
 
 export default function SplitCTA({
@@ -19,37 +21,68 @@ export default function SplitCTA({
   subtext = "Access off-market landmark opportunities reserved for qualified investors.",
   primaryLabel = "Access Private Opportunities",
   secondaryLabel = "Request Market Intelligence",
+  theme = "dark",
 }: SplitCTAProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const isLight = theme === "light";
+
+  const handleNavigation = (id: string) => {
+    if (pathname === "/") {
+      const element = document.getElementById(id);
+      if (element) {
+        // Calculate offset for fixed header
+        const offset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    } else {
+      // Navigate to homepage with query param to avoid native hash jump flicker
+      router.push(`/?scrollTo=${id}`, { scroll: false });
+    }
+  };
+
   return (
-    <section className="py-24 px-6">
+    <section className={`${isLight ? "py-6" : "py-12"} px-4`}>
       <ScrollReveal>
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/8 bg-[#0A0A0A] shadow-2xl">
+        <div className={`relative overflow-hidden ${isLight ? "" : "rounded-[2.5rem] border border-white/8 bg-[#0A0A0A] shadow-2xl transition-colors duration-500"}`}>
           {/* Gradient glow background */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(199,165,106,0.1)_0%,transparent_60%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(199,165,106,0.05)_0%,transparent_50%)]" />
+          {!isLight && (
+            <>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(199,165,106,0.1)_0%,transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(199,165,106,0.05)_0%,transparent_50%)]" />
+            </>
+          )}
 
           {/* Top accent line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C7A56A]/40 to-transparent" />
+          <div className={`absolute top-0 left-0 right-0 h-px ${isLight ? "bg-gradient-to-r from-transparent via-[#C7A56A]/20 to-transparent" : "bg-gradient-to-r from-transparent via-[#C7A56A]/40 to-transparent"}`} />
 
           {/* Subtle grid */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(199,165,106,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(199,165,106,0.8) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
+          {!isLight && (
+            <div
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage: "linear-gradient(rgba(199,165,106,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(199,165,106,0.8) 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+              }}
+            />
+          )}
 
           {/* Corner bracket TL */}
-          <div className="absolute top-8 left-8 w-6 h-6 border-t border-l border-[#C7A56A]/25" />
+          <div className={`absolute top-0 left-0 md:top-4 md:left-4 w-6 h-6 border-t border-l ${isLight ? "border-gold/30" : "border-[#C7A56A]/25"}`} />
           {/* Corner bracket BR */}
-          <div className="absolute bottom-8 right-8 w-6 h-6 border-b border-r border-[#C7A56A]/25" />
+          <div className={`absolute bottom-0 right-0 md:bottom-4 md:right-4 w-6 h-6 border-b border-r ${isLight ? "border-gold/30" : "border-[#C7A56A]/25"}`} />
 
           {/* Split layout */}
-          <div className="relative z-10 grid md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/6">
+          <div className={`relative z-10 grid md:grid-cols-2 ${isLight ? "py-4 md:py-6" : ""}`}>
             {/* LEFT — Headline block */}
-            <div className="p-10 md:p-16 flex flex-col justify-center">
+            <div className={`${isLight ? "p-4 md:p-6" : "p-10 md:p-16"} flex flex-col justify-center`}>
               <motion.span
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -65,9 +98,11 @@ export default function SplitCTA({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-white mb-6"
+                className={`font-display text-3xl md:text-4xl lg:text-5xl font-light leading-tight ${isLight ? "text-charcoal" : "text-white"} mb-6`}
               >
-                {headline}
+                {headline.split('\n').map((line, i) => (
+                  <span key={i} className="block">{line}</span>
+                ))}
               </motion.h2>
 
               <motion.p
@@ -75,7 +110,7 @@ export default function SplitCTA({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="font-body text-white/50 text-sm md:text-base leading-relaxed font-light max-w-sm"
+                className={`font-body ${isLight ? "text-charcoal/50" : "text-white/50"} text-sm md:text-base leading-relaxed font-light max-w-sm`}
               >
                 {subtext}
               </motion.p>
@@ -91,7 +126,7 @@ export default function SplitCTA({
             </div>
 
             {/* RIGHT — CTA block */}
-            <div className="p-10 md:p-16 flex flex-col justify-center items-start md:items-center gap-6">
+            <div className={`${isLight ? "p-4 md:p-6" : "p-10 md:p-10"} flex flex-col justify-center items-start md:items-center gap-6`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -101,22 +136,22 @@ export default function SplitCTA({
               >
                 {/* Primary button */}
                 <button
-                  onClick={() => (window.location.href = "/#services")}
-                  className="group relative w-full flex items-center justify-center gap-3 bg-gold text-[#0A0A0A] font-body text-xs tracking-[0.25em] uppercase font-bold px-8 py-5 rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_32px_rgba(199,165,106,0.5)] hover:scale-[1.02] mb-4"
+                  onClick={() => handleNavigation("services")}
+                  className={`group relative w-full flex items-center justify-center gap-3 bg-gold ${isLight ? "text-[#0A0A0A]" : "text-[#0A0A0A]"} font-body text-[10px] tracking-[0.25em] uppercase font-bold px-3 py-4 rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_0_24px_rgba(199,165,106,0.4)] mb-2`}
                 >
                   {/* Shimmer */}
-                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/20 group-hover:translate-x-[200%] transition-transform duration-700" />
-                  <span className="relative">{primaryLabel}</span>
-                  <ArrowRight className="w-3.5 h-3.5 relative group-hover:translate-x-1 transition-transform duration-300" />
+                  <span className="absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/20 group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out" />
+                  <span className="relative z-10">{primaryLabel}</span>
+                  <ArrowRight className="w-3.5 h-3.5 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
 
                 {/* Secondary button */}
                 <button
-                  onClick={() => (window.location.href = "/#contact")}
-                  className="group w-full flex items-center justify-center gap-3 border border-white/15 text-white/70 hover:text-white hover:border-gold/50 font-body text-xs tracking-[0.25em] uppercase font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5"
+                  onClick={() => handleNavigation("contact")}
+                  className={`group w-full flex items-center justify-center gap-3 border ${isLight ? "border-charcoal/10 text-charcoal/60" : "border-white/15 text-white/70"} hover:text-gold hover:border-gold/50 font-body text-[10px] tracking-[0.25em] uppercase font-semibold px-5 py-4 rounded-full transition-all duration-300 hover:bg-gold/[0.03]`}
                 >
-                  <span>{secondaryLabel}</span>
-                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  <span className="relative z-10">{secondaryLabel}</span>
+                  <ArrowRight className={`w-3 h-3 relative z-10 ${isLight ? "opacity-100" : "opacity-0 group-hover:opacity-100"} group-hover:translate-x-1 transition-all duration-300`} />
                 </button>
               </motion.div>
 
@@ -126,7 +161,7 @@ export default function SplitCTA({
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-[9px] uppercase tracking-[0.3em] text-white/25 font-bold text-center md:text-left"
+                className={`text-[9px] uppercase tracking-[0.3em] ${isLight ? "text-charcoal/30" : "text-white/25"} font-bold text-center md:text-left`}
               >
                 Discreet · Confidential · By Invitation
               </motion.p>

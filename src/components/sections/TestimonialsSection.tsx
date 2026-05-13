@@ -214,18 +214,18 @@ const TestimonialsSection = () => {
 
         {/* Active Testimonial Quote Display */}
         <div className="max-w-3xl mx-auto relative min-h-[220px]">
-          <div className="flex items-center justify-between absolute top-1/2 left-0 right-0 -translate-y-1/2 -mx-10 md:-mx-20 z-30">
+          <div className="flex items-center justify-between absolute top-1/2 left-0 right-0 -translate-y-1/2 px-2 md:-mx-20 z-30">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
+              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-gold hover:border-gold transition-all duration-300 bg-background/80 backdrop-blur-md shadow-sm"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
             <button
               onClick={handleNext}
-              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-champagne hover:border-champagne transition-all duration-300 bg-background/60 backdrop-blur-md shadow-sm"
+              className="p-3 rounded-full border border-foreground/20 text-foreground/55 hover:text-gold hover:border-gold transition-all duration-300 bg-background/80 backdrop-blur-md shadow-sm"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
           </div>
 
@@ -239,7 +239,7 @@ const TestimonialsSection = () => {
               className="flex flex-col items-center"
             >
               <blockquote
-                className="font-body text-xl md:text-2xl text-foreground/85 leading-relaxed italic mb-8 max-w-2xl"
+                className="font-body text-lg md:text-2xl text-foreground/85 leading-relaxed italic mb-8 max-w-2xl px-12 md:px-0"
                 dangerouslySetInnerHTML={{ __html: `"${activeTestimonial.quote}"` }}
               />
               <div className="flex flex-col items-center">
