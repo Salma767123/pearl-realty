@@ -74,6 +74,17 @@ const OpportunitySection = () => {
                   {opt.description}
                 </p>
               </ScrollReveal>
+
+              {/* Explore Analysis Button - Desktop/Tablet Position */}
+              <div className="hidden md:block">
+                <ScrollReveal delay={600}>
+                  <Link href={opt.link} scroll={true} onClick={() => window.scrollTo(0, 0)}>
+                    <MagneticButton className="px-10 py-5 rounded-full">
+                      Explore Analysis &rarr;
+                    </MagneticButton>
+                  </Link>
+                </ScrollReveal>
+              </div>
             </div>
 
             {/* Right Visualization */}
@@ -115,8 +126,8 @@ const OpportunitySection = () => {
                   />
                 </svg>
 
-                {/* Explore Analysis Button - Moved to the end of the flow */}
-                <div className="mt-12 md:mt-16 flex justify-center md:justify-end">
+                {/* Explore Analysis Button - Mobile Position (at the end) */}
+                <div className="mt-12 md:hidden flex justify-center">
                   <ScrollReveal delay={600}>
                     <Link href={opt.link} scroll={true} onClick={() => window.scrollTo(0, 0)}>
                       <MagneticButton className="px-10 py-5 rounded-full">
